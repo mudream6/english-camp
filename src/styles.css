@@ -1,0 +1,313 @@
+@import "tailwindcss";
+
+/* ============================================================
+   设计系统 —— 海外商务感 / 低饱和 / 克制
+   换肤只需要改 :root 语义 token（@theme）
+   ============================================================ */
+@theme {
+  /* 中性色：暖调纸白 + 墨黑，低饱和 */
+  --color-paper: #f5f2ea;      /* 页面底色 */
+  --color-paper2: #eeebe1;     /* 交替区块底色 */
+  --color-card: #fbfaf5;       /* 卡片底色 */
+  --color-ink: #26282b;        /* 主文字 */
+  --color-mut: #6f7478;        /* 次级文字 */
+  --color-faint: #9a9ea0;      /* 弱化文字 */
+  --color-line: rgba(38, 40, 43, 0.12);
+
+  /* 主色：低饱和松石绿（克制、有质感的商务点缀） */
+  --color-pine: #2e5a49;
+  --color-pine-deep: #22423a;
+  --color-pine-soft: rgba(46, 90, 73, 0.08);
+  --color-mist: #e2e9e0;
+
+  /* 深色收束页 */
+  --color-night: #202427;
+  --color-night2: #191d20;
+  --color-cream: #f7f5ef;
+
+  /* 字体：Manrope（拉丁）+ 系统中文字体栈；斜体衬线点缀用 Georgia */
+  --font-sans: "Manrope Variable", "Manrope", -apple-system, BlinkMacSystemFont,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", sans-serif;
+
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- base ---------- */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+section[id] {
+  scroll-margin-top: 92px;
+}
+::selection {
+  background: rgba(46, 90, 73, 0.22);
+}
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------- 布局 ---------- */
+.shell {
+  width: 100%;
+  max-width: 1560px; /* 版心区间 1440–1700 内 */
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4.5vw, 64px);
+}
+
+/* ---------- 按钮 ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 52px;
+  padding: 0 30px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.35s var(--ease-smooth),
+    box-shadow 0.35s var(--ease-smooth),
+    background-color 0.25s,
+    border-color 0.25s,
+    color 0.25s;
+  will-change: transform;
+}
+.btn:active {
+  transform: translateY(0) scale(0.985);
+}
+.btn-primary {
+  background: var(--color-pine);
+  color: #f7f5ef;
+  box-shadow: 0 14px 30px -14px rgba(34, 66, 58, 0.55);
+}
+.btn-primary:hover {
+  background: var(--color-pine-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 38px -16px rgba(34, 66, 58, 0.6);
+}
+.btn-ghost {
+  border: 1px solid rgba(38, 40, 43, 0.18);
+  color: var(--color-ink);
+  background: transparent;
+}
+.btn-ghost:hover {
+  border-color: rgba(38, 40, 43, 0.45);
+  transform: translateY(-2px);
+}
+.btn-ghost-dark {
+  border: 1px solid rgba(247, 245, 239, 0.28);
+  color: var(--color-cream);
+  background: transparent;
+}
+.btn-ghost-dark:hover {
+  border-color: rgba(247, 245, 239, 0.65);
+  transform: translateY(-2px);
+}
+.btn-sm {
+  height: 42px;
+  padding: 0 20px;
+  font-size: 13.5px;
+}
+
+/* ---------- 文本辅助 ---------- */
+/* 区块小标签：短横线 + 大写英文 + 中文 */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-mut);
+}
+.kicker::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: color-mix(in srgb, var(--color-pine) 50%, transparent);
+}
+.kicker .zh {
+  letter-spacing: 0.14em;
+  text-transform: none;
+  color: color-mix(in srgb, var(--color-ink) 55%, var(--color-mut));
+  margin-left: -4px;
+}
+
+/* 深色底上的 kicker 变体 */
+.kicker-dark {
+  color: rgba(247, 245, 239, 0.55);
+}
+.kicker-dark::before {
+  background: rgba(126, 178, 152, 0.65);
+}
+.kicker-dark .zh {
+  color: rgba(247, 245, 239, 0.75);
+}
+
+/* 斜体衬线点缀（海外杂志感），仅用于拉丁语词句 */
+.serif-it {
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* 序号：衬线斜体大数字 */
+.no-num {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* 横向长箭头文字链接 */
+.tlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-pine);
+}
+.tlink .arr {
+  transition: transform 0.35s var(--ease-smooth);
+}
+.tlink:hover .arr {
+  transform: translateX(6px);
+}
+
+/* ---------- 入场动画（仅 transform / opacity，GPU 友好） ---------- */
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.h-anim {
+  opacity: 0;
+  animation: riseIn 0.9s var(--ease-smooth) forwards;
+  will-change: opacity, transform;
+}
+/* 滚动显现（IntersectionObserver 控制） */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s var(--ease-smooth),
+    transform 0.9s var(--ease-smooth);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero 光标提示线 */
+@keyframes cueDrop {
+  from {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+.cue-line {
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-ink) 30%, transparent),
+    transparent
+  );
+  animation: cueDrop 2.4s var(--ease-smooth) infinite alternate;
+}
+
+/* ---------- 课程卡片封面（低饱和渐变，编号 1–4） ---------- */
+.cv {
+  background-size: 140% 140%;
+  transition: background-position 0.6s ease-out;
+}
+.course-card:hover .cv {
+  background-position: 90% 10%;
+}
+.cv-1 { background-image: linear-gradient(135deg, #2e5a49, #58806f); }
+.cv-2 { background-image: linear-gradient(135deg, #41576a, #6a8193); }
+.cv-3 { background-image: linear-gradient(135deg, #7a6a50, #a3906e); }
+.cv-4 { background-image: linear-gradient(135deg, #3c4f57, #61737a); }
+
+/* ---------- 外教头像占位（低饱和底） ---------- */
+.av {
+  background-size: 120% 120%;
+}
+.av-0 { background-image: linear-gradient(135deg, #2e5a49, #6b8a7b); }
+.av-1 { background-image: linear-gradient(135deg, #41576a, #7d92a2); }
+.av-2 { background-image: linear-gradient(135deg, #7a6a50, #a89a7f); }
+.av-3 { background-image: linear-gradient(135deg, #4a5061, #83889a); }
+
+/* 深色页上输入控件 */
+.field {
+  width: 100%;
+  height: 50px;
+  border-radius: 12px;
+  border: 1px solid rgba(247, 245, 239, 0.14);
+  background: rgba(247, 245, 239, 0.04);
+  padding: 0 16px;
+  font-size: 14.5px;
+  color: var(--color-cream);
+  outline: none;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+.field::placeholder {
+  color: rgba(247, 245, 239, 0.32);
+}
+.field:focus {
+  border-color: rgba(120, 170, 145, 0.65);
+  background: rgba(247, 245, 239, 0.07);
+}
+select.field option {
+  background: var(--color-night);
+  color: var(--color-cream);
+}
+textarea.field {
+  height: auto;
+  padding-block: 14px;
+  resize: vertical;
+}
+
+/* ---------- 无障碍：跟随系统减弱动画 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
