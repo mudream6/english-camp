@@ -8,9 +8,12 @@ React 19 + Vite 7 + TailwindCSS v4。风格参考海外现代商务网站：简�
 ```bash
 npm install        # 安装依赖（npm 11 若提示脚本拦截，先执行 npm install-scripts approve esbuild）
 npm run dev        # 本地开发 → http://localhost:5173
-npm run build      # 产物输出到 dist/（base:'./' 相对路径，可部署到任意子路径）
+npm run build      # 单文件构建 → dist/index.html（JS/CSS/字体全部内联）
 npm run preview    # 本地预览构建产物
 ```
+
+产物 `dist/index.html` 为**自包含单文件**：不依赖服务器，双击即可在浏览器打开；
+也支持正常部署（Vercel / Netlify / Nginx / GitHub Pages 均可，配合同目录 `favicon.svg` 使用）。
 
 ## 目录结构
 
