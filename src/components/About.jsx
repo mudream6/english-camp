@@ -23,7 +23,7 @@ export default function About() {
             </Reveal>
             <Reveal delay={200}>
               <a href="#courses" className="tlink mt-9">
-                看看我们怎么上课
+                {about.linkText}
                 <svg className="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
