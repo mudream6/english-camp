@@ -51,7 +51,12 @@ export default function About() {
         <Reveal delay={100}>
           <div className="mt-16 grid grid-cols-2 gap-y-10 border-t border-line pt-10 md:grid-cols-4 md:pt-12">
             {about.stats.map((s, i) => (
-              <div key={s.l} className={`md:px-8 ${i > 0 ? 'md:border-l md:border-line' : ''} ${i % 2 === 1 ? 'pl-8 md:pl-8' : ''} ${i % 2 === 1 && i < 2 ? 'max-md:border-l max-md:border-line max-md:pl-8' : ''}`}>
+              <div
+                key={s.l}
+                className={`md:px-8 ${
+                  i % 2 === 1 ? 'max-md:border-l max-md:border-line max-md:pl-8' : ''
+                } ${i > 0 ? 'md:border-l md:border-line' : ''}`}
+              >
                 <p className="text-[clamp(2.2rem,3.6vw,3.2rem)] font-extrabold tracking-[-0.02em]">
                   {s.v}
                   {s.u && <span className="text-[0.62em] font-bold text-pine ml-0.5">{s.u}</span>}
