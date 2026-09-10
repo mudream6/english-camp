@@ -70,13 +70,13 @@ function LeadForm() {
       <div className="mt-7 grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="lf-name" className="mb-2 block text-[12px] font-medium text-cream/50">
-            {fields.name} <span className="text-pine">*</span>
+            {fields.name} <span className="text-brand">*</span>
           </label>
           <input id="lf-name" name="name" required className="field" placeholder="怎么称呼你" />
         </div>
         <div>
           <label htmlFor="lf-phone" className="mb-2 block text-[12px] font-medium text-cream/50">
-            {fields.phone} <span className="text-pine">*</span>
+            {fields.phone} <span className="text-brand">*</span>
           </label>
           <input id="lf-phone" name="phone" type="tel" required className="field" placeholder="方便联系的手机号" />
         </div>

@@ -24,8 +24,8 @@ export default function Team() {
         <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {team.cards.map((c, i) => (
             <Reveal key={c.t} delay={(i % 4) * 90}>
-              <article className="group flex h-full flex-col rounded-[22px] border border-line bg-card p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-pine/25 hover:shadow-[0_30px_60px_-38px_rgba(38,40,43,0.35)]">
-                <span className="no-num text-[38px] leading-none text-pine/25 transition-colors duration-300 group-hover:text-pine/50">
+              <article className="group flex h-full flex-col rounded-[22px] border border-line bg-card p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-brand/25 hover:shadow-[0_30px_60px_-38px_rgba(38,40,43,0.35)]">
+                <span className="no-num text-[38px] leading-none text-brand/25 transition-colors duration-300 group-hover:text-brand/50">
                   0{i + 1}
                 </span>
                 <h3 className="mt-6 text-[19px] font-bold tracking-tight leading-snug">{c.t}</h3>

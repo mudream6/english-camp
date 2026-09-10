@@ -36,7 +36,7 @@ export default function About() {
             {about.features.map((f, i) => (
               <Reveal key={f.n} delay={i * 90}>
                 <div className="group flex gap-7 border-t border-line py-7 transition-colors duration-300 first:border-t-0 sm:gap-10">
-                  <span className="no-num text-[22px] leading-none text-pine/70 pt-1">{f.n}</span>
+                  <span className="no-num text-[22px] leading-none text-brand/70 pt-1">{f.n}</span>
                   <div>
                     <h3 className="text-[19px] font-bold tracking-tight">{f.t}</h3>
                     <p className="mt-2 max-w-[480px] text-[14.5px] leading-[1.85] text-mut">{f.d}</p>
@@ -59,7 +59,7 @@ export default function About() {
               >
                 <p className="text-[clamp(2.2rem,3.6vw,3.2rem)] font-extrabold tracking-[-0.02em]">
                   {s.v}
-                  {s.u && <span className="text-[0.62em] font-bold text-pine ml-0.5">{s.u}</span>}
+                  {s.u && <span className="text-[0.62em] font-bold text-brand ml-0.5">{s.u}</span>}
                 </p>
                 <p className="mt-1.5 text-[13.5px] font-medium text-mut">{s.l}</p>
               </div>

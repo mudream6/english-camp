@@ -9,7 +9,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(1100px 700px at 88% -8%, rgba(46,90,73,0.13), transparent 62%), radial-gradient(900px 640px at -8% 108%, rgba(192,158,105,0.12), transparent 55%)',
+            'radial-gradient(1100px 700px at 88% -8%, rgba(0,0,94,0.10), transparent 62%), radial-gradient(900px 640px at -8% 108%, rgba(192,158,105,0.10), transparent 55%)',
         }}
       />
 
@@ -24,7 +24,7 @@ export default function Hero() {
 
         {/* 斜体衬线英文引句 */}
         <p
-          className="h-anim serif-it mt-5 text-[16px] sm:text-[18px] md:text-[20px] text-pine"
+          className="h-anim serif-it mt-5 text-[16px] sm:text-[18px] md:text-[20px] text-brand"
           style={{ animationDelay: '200ms' }}
         >
           {hero.leadIt}
@@ -38,7 +38,7 @@ export default function Hero() {
           <span className="block">{hero.line1}</span>
           <span className="block">
             {hero.line2a}
-            <span className="text-pine">{hero.line2b}</span>
+            <span className="text-brand">{hero.line2b}</span>
           </span>
         </h1>
 
@@ -78,7 +78,7 @@ export default function Hero() {
         >
           {hero.trust.map((t) => (
             <li key={t} className="flex items-center gap-2 text-[13.5px] font-medium text-mut sm:text-[14px]">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-pine)" strokeWidth="2.2" className="shrink-0">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" strokeWidth="2.2" className="shrink-0">
                 <path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               {t}

@@ -14,15 +14,15 @@
   --color-faint: #9a9ea0;      /* 弱化文字 */
   --color-line: rgba(38, 40, 43, 0.12);
 
-  /* 主色：低饱和松石绿（克制、有质感的商务点缀） */
-  --color-pine: #2e5a49;
-  --color-pine-deep: #22423a;
-  --color-pine-soft: rgba(46, 90, 73, 0.08);
-  --color-mist: #e2e9e0;
+  /* 品牌主色：取自官网 logo 藏青（#00005E 精确取色），白字徽标同色系 */
+  --color-brand: #00005e;
+  --color-brand-deep: #00003d;
+  --color-brand-soft: rgba(0, 0, 94, 0.07);
+  --color-mist: #e4e5f2;
 
-  /* 深色收束页 */
-  --color-night: #202427;
-  --color-night2: #191d20;
+  /* 深色收束页（藏青调，与 logo 同族） */
+  --color-night: #0c0c33;
+  --color-night2: #070722;
   --color-cream: #f7f5ef;
 
   /* 字体：Manrope（拉丁）+ 系统中文字体栈；斜体衬线点缀用 Georgia */
@@ -48,7 +48,7 @@ section[id] {
   scroll-margin-top: 92px;
 }
 ::selection {
-  background: rgba(46, 90, 73, 0.22);
+  background: rgba(0, 0, 94, 0.18);
 }
 img,
 svg,
@@ -91,14 +91,14 @@ video {
   transform: translateY(0) scale(0.985);
 }
 .btn-primary {
-  background: var(--color-pine);
+  background: var(--color-brand);
   color: #f7f5ef;
-  box-shadow: 0 14px 30px -14px rgba(34, 66, 58, 0.55);
+  box-shadow: 0 14px 30px -14px rgba(0, 0, 61, 0.42);
 }
 .btn-primary:hover {
-  background: var(--color-pine-deep);
+  background: var(--color-brand-deep);
   transform: translateY(-2px);
-  box-shadow: 0 20px 38px -16px rgba(34, 66, 58, 0.6);
+  box-shadow: 0 20px 38px -16px rgba(0, 0, 61, 0.5);
 }
 .btn-ghost {
   border: 1px solid rgba(38, 40, 43, 0.18);
@@ -140,7 +140,7 @@ video {
   content: "";
   width: 30px;
   height: 1px;
-  background: color-mix(in srgb, var(--color-pine) 50%, transparent);
+  background: color-mix(in srgb, var(--color-brand) 50%, transparent);
 }
 .kicker .zh {
   letter-spacing: 0.14em;
@@ -154,7 +154,7 @@ video {
   color: rgba(247, 245, 239, 0.55);
 }
 .kicker-dark::before {
-  background: rgba(126, 178, 152, 0.65);
+  background: rgba(140, 145, 235, 0.7);
 }
 .kicker-dark .zh {
   color: rgba(247, 245, 239, 0.75);
@@ -181,7 +181,7 @@ video {
   gap: 10px;
   font-weight: 600;
   font-size: 15px;
-  color: var(--color-pine);
+  color: var(--color-brand);
 }
 .tlink .arr {
   transition: transform 0.35s var(--ease-smooth);
@@ -250,7 +250,7 @@ video {
 .course-card:hover .cv {
   background-position: 90% 10%;
 }
-.cv-1 { background-image: linear-gradient(135deg, #2e5a49, #58806f); }
+.cv-1 { background-image: linear-gradient(135deg, #00005e, #3d3d9c); }
 .cv-2 { background-image: linear-gradient(135deg, #41576a, #6a8193); }
 .cv-3 { background-image: linear-gradient(135deg, #7a6a50, #a3906e); }
 .cv-4 { background-image: linear-gradient(135deg, #3c4f57, #61737a); }
@@ -259,7 +259,7 @@ video {
 .av {
   background-size: 120% 120%;
 }
-.av-0 { background-image: linear-gradient(135deg, #2e5a49, #6b8a7b); }
+.av-0 { background-image: linear-gradient(135deg, #00005e, #5858b0); }
 .av-1 { background-image: linear-gradient(135deg, #41576a, #7d92a2); }
 .av-2 { background-image: linear-gradient(135deg, #7a6a50, #a89a7f); }
 .av-3 { background-image: linear-gradient(135deg, #4a5061, #83889a); }
@@ -281,7 +281,7 @@ video {
   color: rgba(247, 245, 239, 0.32);
 }
 .field:focus {
-  border-color: rgba(120, 170, 145, 0.65);
+  border-color: rgba(130, 135, 225, 0.6);
   background: rgba(247, 245, 239, 0.07);
 }
 select.field option {

@@ -31,7 +31,7 @@ export default function Nav() {
       <div className="shell flex h-[72px] items-center justify-between gap-6">
         {/* 品牌 */}
         <a href="#top" className="flex items-center gap-3 shrink-0" onClick={() => setOpen(false)}>
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-pine text-cream serif-it text-[21px] leading-none pt-0.5">
+          <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand text-cream serif-it text-[21px] leading-none pt-0.5">
             {brand.mark}
           </span>
           <span className="leading-tight">
@@ -53,7 +53,7 @@ export default function Nav() {
               className="group relative text-[14.5px] font-medium text-ink/80 hover:text-ink transition-colors py-2"
             >
               {l.label}
-              <span className="absolute left-0 -bottom-0.5 h-px w-full origin-left scale-x-0 bg-pine transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute left-0 -bottom-0.5 h-px w-full origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </nav>
@@ -110,7 +110,7 @@ export default function Nav() {
               }`}
               style={{ transitionDelay: open ? `${120 + i * 60}ms` : '0ms' }}
             >
-              <span className="no-num text-[15px] text-pine">0{i + 1}</span>
+              <span className="no-num text-[15px] text-brand">0{i + 1}</span>
               <span className="text-[26px] font-bold tracking-tight">{l.label}</span>
             </a>
           ))}

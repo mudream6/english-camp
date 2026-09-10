@@ -31,7 +31,7 @@ export default function Outcomes() {
             {journey.steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 100}>
                 <div className="relative h-full rounded-[20px] border border-line bg-card p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_46px_-34px_rgba(38,40,43,0.4)]">
-                  <span className="no-num text-[46px] leading-none text-pine/25">{s.n}</span>
+                  <span className="no-num text-[46px] leading-none text-brand/25">{s.n}</span>
                   <h4 className="mt-4 text-[19px] font-bold tracking-tight">{s.t}</h4>
                   <p className="mt-2.5 text-[14px] leading-[1.85] text-mut">{s.d}</p>
                   {i < journey.steps.length - 1 && (
@@ -58,8 +58,8 @@ export default function Outcomes() {
           <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
             {barriers.items.map((b, i) => (
               <Reveal key={b} delay={(i % 4) * 70}>
-                <div className="flex h-full items-center gap-4 rounded-[16px] border border-line bg-card px-5 py-4.5 transition-all duration-500 hover:-translate-y-0.5 hover:border-pine/25">
-                  <span className="no-num shrink-0 text-[18px] leading-none text-pine/50">0{i + 1}</span>
+                <div className="flex h-full items-center gap-4 rounded-[16px] border border-line bg-card px-5 py-4.5 transition-all duration-500 hover:-translate-y-0.5 hover:border-brand/25">
+                  <span className="no-num shrink-0 text-[18px] leading-none text-brand/50">0{i + 1}</span>
                   <span className="text-[15px] font-semibold tracking-tight">{b}</span>
                 </div>
               </Reveal>
@@ -72,7 +72,7 @@ export default function Outcomes() {
 
         {/* ── 定位宣言横幅 ── */}
         <Reveal delay={80}>
-          <div className="relative mt-20 overflow-hidden rounded-[28px] bg-pine px-8 py-12 text-center sm:px-14 sm:py-16">
+          <div className="relative mt-20 overflow-hidden rounded-[28px] bg-brand px-8 py-12 text-center sm:px-14 sm:py-16">
             <p className="mx-auto max-w-[760px] text-[clamp(1.4rem,2.8vw,2.15rem)] font-extrabold leading-[1.5] tracking-[-0.01em] text-cream">
               {closing}
             </p>

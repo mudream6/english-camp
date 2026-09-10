@@ -7,7 +7,7 @@ const Check = ({ onDark = false }) => (
     height="16"
     viewBox="0 0 24 24"
     fill="none"
-    stroke={onDark ? 'currentColor' : 'var(--color-pine)'}
+    stroke={onDark ? 'currentColor' : 'var(--color-brand)'}
     strokeWidth="2.4"
     className="mt-1 shrink-0"
   >
@@ -43,13 +43,13 @@ export default function Courses() {
         <Reveal delay={100}>
           <article className="mt-14 grid gap-10 overflow-hidden rounded-[28px] border border-line bg-card p-8 sm:p-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
             <div className="flex flex-col justify-center">
-              <span className="self-start rounded-full bg-pine-soft px-4 py-1.5 text-[12px] font-semibold text-pine-deep">
+              <span className="self-start rounded-full bg-brand-soft px-4 py-1.5 text-[12px] font-semibold text-brand-deep">
                 {courses.camp.badge}
               </span>
               <h3 className="mt-6 text-[clamp(1.7rem,3.2vw,2.6rem)] font-extrabold leading-[1.2] tracking-[-0.015em]">
                 {courses.camp.title}
               </h3>
-              <p className="mt-5 flex items-center gap-3 text-[15.5px] font-semibold text-pine">
+              <p className="mt-5 flex items-center gap-3 text-[15.5px] font-semibold text-brand">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <rect x="3" y="4" width="18" height="18" rx="2" />
                   <path d="M16 2v4M8 2v4M3 10h18" strokeLinecap="round" />
@@ -96,7 +96,7 @@ export default function Courses() {
             {courses.path.steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 100}>
                 <div className="relative h-full rounded-[20px] border border-line bg-card p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_46px_-34px_rgba(38,40,43,0.4)]">
-                  <span className="no-num text-[46px] leading-none text-pine/25">{s.n}</span>
+                  <span className="no-num text-[46px] leading-none text-brand/25">{s.n}</span>
                   <h4 className="mt-4 text-[19px] font-bold tracking-tight">{s.t}</h4>
                   <p className="mt-2.5 text-[14px] leading-[1.85] text-mut">{s.d}</p>
                   {i < courses.path.steps.length - 1 && (
@@ -145,7 +145,7 @@ export default function Courses() {
 
             {/* TIFSC 高亮 */}
             <Reveal delay={120}>
-              <div className="relative h-full overflow-hidden rounded-[24px] bg-pine p-8 text-cream sm:p-10">
+              <div className="relative h-full overflow-hidden rounded-[24px] bg-brand p-8 text-cream sm:p-10">
                 <span aria-hidden className="no-num serif-it pointer-events-none absolute -right-3 -top-6 select-none text-[120px] leading-none text-cream/10">
                   4×
                 </span>
@@ -183,7 +183,7 @@ export default function Courses() {
             {courses.require.items.map((r, i) => (
               <Reveal key={r} delay={i * 80}>
                 <div className="flex h-full flex-col rounded-[20px] border border-line bg-card p-7 transition-all duration-500 hover:-translate-y-1">
-                  <span className="no-num text-[30px] leading-none text-pine/60">0{i + 1}</span>
+                  <span className="no-num text-[30px] leading-none text-brand/60">0{i + 1}</span>
                   <p className="mt-5 text-[14.5px] font-semibold leading-[1.75] tracking-tight">{r}</p>
                 </div>
               </Reveal>
