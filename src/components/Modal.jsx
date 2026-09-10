@@ -35,7 +35,7 @@ export default function Modal({ open, onClose, labelledBy, children }) {
         aria-hidden="true"
       />
       {/* 面板 */}
-      <div className="modal-panel relative flex max-h-[90svh] w-full max-w-[880px] flex-col overflow-hidden rounded-[24px] border border-line bg-paper shadow-[0_40px_90px_-30px_rgba(7,7,34,0.6)]">
+      <div className="modal-panel relative flex max-h-[92svh] w-full max-w-[1040px] flex-col overflow-hidden rounded-[24px] border border-line bg-paper shadow-[0_40px_90px_-30px_rgba(7,7,34,0.6)]">
         <button
           type="button"
           onClick={onClose}
