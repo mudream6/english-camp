@@ -7,7 +7,7 @@
 export const brand = {
   nameZh: 'TIFSC 海南英语村',
   nameEn: 'Hainan English Village',
-  tagline: '三周全外教沉浸式口语浸泡营',
+  tagline: '三周全封浸®外语俱乐部',
   mark: 'T',
   watermark: 'TIFSC', // 页脚巨型水印字
 }
@@ -82,7 +82,7 @@ export const courses = {
   sub: '全新一期于 2026 年 10 月 9 日正式开营，面向全社会招生。',
   camp: {
     badge: '新一期 · 招募中',
-    title: '三周全外教沉浸式口语浸泡营',
+    title: '三周全封浸®外语俱乐部',
     date: '2026 年 10 月 9 日开营',
     points: [
       '全外教、零中教，完全复刻海外语言环境',

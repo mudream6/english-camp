@@ -161,8 +161,8 @@
   margin-left: -4px;
 }
 
-/* kicker 里的商标小标：小号 + 上标，紧贴前字 */
-.kicker .reg {
+/* 商标小标：小号 + 上标 ®（Hero kicker / 标题 / 正文通用，配合 <Mark> 使用） */
+.reg {
   font-size: 0.6em;
   vertical-align: 0.58em;
   letter-spacing: 0.02em;

@@ -1,9 +1,7 @@
-import { Fragment } from 'react'
 import { hero } from '../data.js'
+import Mark from './Mark.jsx'
 
 export default function Hero() {
-  // kicker 里的「®」单独渲染成小号上标商标符号
-  const kickerParts = hero.kicker.split('®')
   return (
     <section id="top" className="relative flex min-h-[60svh] flex-col overflow-hidden">
       {/* 低饱和环境光斑（静态渐变，无动画） */}
@@ -23,12 +21,7 @@ export default function Hero() {
           style={{ animationDelay: '80ms' }}
         >
           <span className="zh">
-            {kickerParts.map((part, i) => (
-              <Fragment key={i}>
-                {part}
-                {i < kickerParts.length - 1 && <sup className="reg">®</sup>}
-              </Fragment>
-            ))}
+            <Mark>{hero.kicker}</Mark>
           </span>
         </p>
 

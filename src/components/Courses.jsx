@@ -1,5 +1,6 @@
 import { courses } from '../data.js'
 import Reveal from './Reveal.jsx'
+import Mark from './Mark.jsx'
 
 const Check = ({ onDark = false }) => (
   <svg
@@ -47,7 +48,7 @@ export default function Courses() {
                 {courses.camp.badge}
               </span>
               <h3 className="mt-6 text-[clamp(1.7rem,3.2vw,2.6rem)] font-extrabold leading-[1.2] tracking-[-0.015em]">
-                {courses.camp.title}
+                <Mark>{courses.camp.title}</Mark>
               </h3>
               <p className="mt-5 flex items-center gap-3 text-[15.5px] font-semibold text-brand">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
