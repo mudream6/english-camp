@@ -78,7 +78,7 @@ export default function About() {
         </Reveal>
       </div>
 
-      {/* 点「了解三周浸泡营」→ 居中详情弹窗：半透明遮罩压暗背景，
+      {/* 点「详细了解三周浸泡营」→ 居中详情弹窗：半透明遮罩压暗背景，
           点遮罩 / 右上关闭按钮 / ESC 都能关掉回到原页面 */}
       <Modal open={open} onClose={closeModal} labelledBy="camp-detail-title">
         <CampDetail onClose={closeModal} />
