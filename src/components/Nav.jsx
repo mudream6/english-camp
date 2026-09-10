@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { brand, nav } from '../data.js'
+import logoUrl from '../assets/logo.png'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -29,19 +30,17 @@ export default function Nav() {
       }`}
     >
       <div className="shell flex h-[72px] items-center justify-between gap-6">
-        {/* 品牌 */}
-        <a href="#top" className="flex items-center gap-3 shrink-0" onClick={() => setOpen(false)}>
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand text-cream serif-it text-[21px] leading-none pt-0.5">
-            {brand.mark}
-          </span>
-          <span className="leading-tight">
-            <span className="block text-[16px] font-extrabold tracking-tight">
-              {brand.nameZh}
-            </span>
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.22em] text-mut">
-              {brand.nameEn}
-            </span>
-          </span>
+        {/* 品牌：TIFSC 官方 logo（hero 左上角，随固定导航常驻，高度 40px） */}
+        <a
+          href="#top"
+          className="relative z-[70] flex shrink-0 items-center"
+          onClick={() => setOpen(false)}
+        >
+          <img
+            src={logoUrl}
+            alt={`${brand.nameZh} ${brand.nameEn} TIFSC`}
+            className="h-8 w-auto sm:h-10"
+          />
         </a>
 
         {/* 桌面导航 */}
@@ -89,6 +88,12 @@ export default function Nav() {
               />
             </span>
           </button>
+          {/* 右上角商标小标（同一 logo 的小号用法） */}
+          <img
+            src={logoUrl}
+            alt="TIFSC® 注册商标"
+            className="hidden h-[22px] w-auto md:block"
+          />
         </div>
       </div>
 

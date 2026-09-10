@@ -33,28 +33,33 @@
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ---------- base ---------- */
-html {
-  scroll-behavior: smooth;
-}
-body {
-  background: var(--color-paper);
-  color: var(--color-ink);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-section[id] {
-  scroll-margin-top: 92px;
-}
-::selection {
-  background: rgba(0, 0, 94, 0.18);
-}
-img,
-svg,
-video {
-  display: block;
-  max-width: 100%;
+/* ---------- base ----------
+   必须放在 @layer base 内：Tailwind v4 的工具类都在 @layer utilities，
+   而无层级的裸 CSS 永远优先于有层级的 CSS —— 之前 img{display:block} 裸写，
+   导致 <img class="hidden"> 根本隐藏不掉（md:block 的小标在手机上溢出屏幕）。 */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  section[id] {
+    scroll-margin-top: 92px;
+  }
+  ::selection {
+    background: rgba(0, 0, 94, 0.18);
+  }
+  img,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+  }
 }
 
 /* ---------- 布局 ---------- */
