@@ -72,7 +72,7 @@ export const about = {
     { v: '4', u: '×', l: '普通班口语训练量' },
     { v: '0', u: '', l: '中教 / 刷题 / 应试' },
   ],
-  linkText: '详细了解三周浸泡营',
+  linkText: '查看三周浸泡营具体由来',
 }
 
 export const courses = {
