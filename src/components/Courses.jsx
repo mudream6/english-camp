@@ -124,28 +124,8 @@ export default function Courses() {
           </Reveal>
 
           <div className="mt-9 grid gap-6 lg:grid-cols-2">
-            {/* 普通班 */}
-            <Reveal>
-              <div className="h-full rounded-[24px] border border-line bg-paper p-8 sm:p-10">
-                <div className="flex items-center justify-between gap-4">
-                  <h4 className="text-[19px] font-bold tracking-tight">{courses.compare.standard.who}</h4>
-                  <span className="rounded-full border border-line px-3.5 py-1 text-[12px] font-medium text-mut">
-                    {courses.compare.standard.len}
-                  </span>
-                </div>
-                <ul className="mt-7 space-y-4">
-                  {courses.compare.standard.items.map((p) => (
-                    <li key={p} className="flex items-start gap-3.5 text-[14.5px] leading-relaxed text-mut">
-                      <Cross />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-
             {/* TIFSC 高亮 */}
-            <Reveal delay={120}>
+            <Reveal>
               <div className="relative h-full overflow-hidden rounded-[24px] bg-brand p-8 text-cream sm:p-10">
                 <span aria-hidden className="no-num serif-it pointer-events-none absolute -right-3 -top-6 select-none text-[120px] leading-none text-cream/10">
                   4×
@@ -167,6 +147,26 @@ export default function Courses() {
                 <p className="relative mt-8 border-t border-cream/15 pt-6 text-[17px] font-bold tracking-tight">
                   {courses.compare.line}
                 </p>
+              </div>
+            </Reveal>
+
+            {/* 普通班 */}
+            <Reveal delay={120}>
+              <div className="h-full rounded-[24px] border border-line bg-paper p-8 sm:p-10">
+                <div className="flex items-center justify-between gap-4">
+                  <h4 className="text-[19px] font-bold tracking-tight">{courses.compare.standard.who}</h4>
+                  <span className="rounded-full border border-line px-3.5 py-1 text-[12px] font-medium text-mut">
+                    {courses.compare.standard.len}
+                  </span>
+                </div>
+                <ul className="mt-7 space-y-4">
+                  {courses.compare.standard.items.map((p) => (
+                    <li key={p} className="flex items-start gap-3.5 text-[14.5px] leading-relaxed text-mut">
+                      <Cross />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Reveal>
           </div>
