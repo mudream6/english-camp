@@ -5,6 +5,8 @@
 //     @选择器      元素滚到视口中央 → 整视口截图(按 dpr 放大) → 写 <out>.rect.json
 //                  再跑 python scripts/crop.py <out.png> 裁出局部（推荐，坐标不会漂）
 //   scale：裁剪模式的放大倍数 / @模式的 deviceScaleFactor（默认 2）
+//   act（第 9 个）：交互动作，用 ; 串联 → click:<选择器> / key:<键> / mouse:x,y / eval:<表达式>
+//     例：'eval:document.querySelector("#about").scrollIntoView();click:#about .tlink;eval:!!document.querySelector(".modal-panel")'
 // 注意: headless 的 --screenshot + --window-size 不做移动端模拟，
 //       会按 ~980px 布局视口渲染再裁到窗口宽度，看起来像"内容被右侧截断"——
 //       那是假象。要验证移动端布局必须走 CDP 的 mobile emulation。
@@ -19,6 +21,7 @@ const [
   full = 'false',
   clip = '',
   scale = '2',
+  act = '',
 ] = process.argv.slice(2)
 const CDP_PORT = 9333
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
@@ -77,6 +80,43 @@ await send('Runtime.evaluate', {
   })()`,
 })
 await sleep(300)
+
+// 交互动作（第 9 个参数，用 ; 串联，可组合出「点击→键盘→断言」流程）
+//   click:<选择器>   元素 .click()（React 合成事件可收到）
+//   key:<键名>       发送按键（如 key:Escape）
+//   mouse:<x>,<y>    在视口坐标按下+抬起（测「点遮罩关闭」这类真实命中）
+//   eval:<表达式>     求值并打印 → 用它断言弹窗开关状态
+for (const a of act.split(';').filter(Boolean)) {
+  if (a.startsWith('click:')) {
+    const sel = a.slice(6)
+    const ok = (
+      await send('Runtime.evaluate', {
+        returnByValue: true,
+        expression: `(() => { const el = document.querySelector(${JSON.stringify(sel)}); if (!el) return false; el.click(); return true })()`,
+      })
+    ).result.result.value
+    if (!ok) {
+      console.error(`click 未找到: ${sel}`)
+      ws.close()
+      process.exit(1)
+    }
+    await sleep(900)
+  } else if (a.startsWith('key:')) {
+    const k = a.slice(4)
+    const vk = k === 'Escape' ? 27 : k === 'Enter' ? 13 : 0
+    await send('Input.dispatchKeyEvent', { type: 'keyDown', key: k, code: k, windowsVirtualKeyCode: vk, nativeVirtualKeyCode: vk })
+    await send('Input.dispatchKeyEvent', { type: 'keyUp', key: k, code: k, windowsVirtualKeyCode: vk, nativeVirtualKeyCode: vk })
+    await sleep(700)
+  } else if (a.startsWith('mouse:')) {
+    const [mx, my] = a.slice(6).split(',').map(Number)
+    await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: mx, y: my, button: 'left', clickCount: 1 })
+    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: mx, y: my, button: 'left', clickCount: 1 })
+    await sleep(700)
+  } else if (a.startsWith('eval:')) {
+    const v = (await send('Runtime.evaluate', { returnByValue: true, expression: a.slice(5) })).result.result.value
+    console.log(`eval → ${JSON.stringify(v)}`)
+  }
+}
 
 const shotArgs = { format: 'png', captureBeyondViewport: isFull }
 

@@ -205,7 +205,7 @@
   font-weight: 400;
 }
 
-/* 横向长箭头文字链接 */
+/* 横向长箭头文字链接（About 里改用 <button> 触发详情弹窗，外观保持一致） */
 .tlink {
   display: inline-flex;
   align-items: center;
@@ -213,12 +213,50 @@
   font-weight: 600;
   font-size: 15px;
   color: var(--color-brand);
+  background: none;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 .tlink .arr {
   transition: transform 0.35s var(--ease-smooth);
 }
 .tlink:hover .arr {
   transform: translateX(6px);
+}
+
+/* ---------- 弹窗：半透明遮罩 + 居中面板（仅 transform / opacity） ---------- */
+@keyframes modalFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.modal-backdrop {
+  animation: modalFade 0.3s var(--ease-smooth) both;
+}
+.modal-panel {
+  animation: modalPop 0.42s var(--ease-smooth) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal-backdrop,
+  .modal-panel {
+    animation: none;
+  }
 }
 
 /* ---------- 入场动画（仅 transform / opacity，GPU 友好） ---------- */

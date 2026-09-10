@@ -1,8 +1,14 @@
+import { useState } from 'react'
 import { about } from '../data.js'
+import CampDetail from './CampDetail.jsx'
 import Mark from './Mark.jsx'
+import Modal from './Modal.jsx'
 import Reveal from './Reveal.jsx'
 
 export default function About() {
+  const [open, setOpen] = useState(false)
+  const closeModal = () => setOpen(false)
+
   return (
     <section id="about" className="py-[clamp(80px,10vw,150px)]">
       <div className="shell">
@@ -26,12 +32,12 @@ export default function About() {
               <p className="mt-5 max-w-[560px] text-[15.5px] leading-[2] text-ink/75">{about.p3}</p>
             </Reveal>
             <Reveal delay={200}>
-              <a href="#courses" className="tlink mt-9">
+              <button type="button" className="tlink mt-9" aria-haspopup="dialog" onClick={() => setOpen(true)}>
                 {about.linkText}
                 <svg className="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </a>
+              </button>
             </Reveal>
           </div>
 
@@ -71,6 +77,12 @@ export default function About() {
           </div>
         </Reveal>
       </div>
+
+      {/* 点「了解三周浸泡营」→ 居中详情弹窗：半透明遮罩压暗背景，
+          点遮罩 / 右上关闭按钮 / ESC 都能关掉回到原页面 */}
+      <Modal open={open} onClose={closeModal} labelledBy="camp-detail-title">
+        <CampDetail onClose={closeModal} />
+      </Modal>
     </section>
   )
 }
