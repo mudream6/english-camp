@@ -380,3 +380,35 @@ textarea.field {
     transform: none;
   }
 }
+
+/* ===== 弹窗照片：余国良博士标识（桌面悬停 → 图底部滑出椭圆标识）===== */
+/* 默认（触屏 / 无 hover 的设备）：标识排在图片下方，避免挡住半张照片 */
+.photo-caption {
+  position: static;
+  border-radius: 18px;
+}
+/* 有鼠标的设备：标识是图底部外侧藏着的椭圆，碰到图片才滑进来 */
+@media (hover: hover) {
+  .photo-caption {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border-radius: 999px;
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.34s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  .photo-cell:hover .photo-caption,
+  .photo-cell:focus-within .photo-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-caption {
+    transition: none;
+  }
+}

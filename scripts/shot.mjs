@@ -5,7 +5,7 @@
 //     @选择器      元素滚到视口中央 → 整视口截图(按 dpr 放大) → 写 <out>.rect.json
 //                  再跑 python scripts/crop.py <out.png> 裁出局部（推荐，坐标不会漂）
 //   scale：裁剪模式的放大倍数 / @模式的 deviceScaleFactor（默认 2）
-//   act（第 9 个）：交互动作，用 ; 串联 → click:<选择器> / key:<键> / mouse:x,y / eval:<表达式>
+//   act（第 9 个）：交互动作，用 ; 串联 → click:<选择器> / key:<键> / mouse:x,y / hover:x,y / media:hover=none,pointer=coarse / eval:<表达式>
 //     例：'eval:document.querySelector("#about").scrollIntoView();click:#about .tlink;eval:!!document.querySelector(".modal-panel")'
 // 注意: headless 的 --screenshot + --window-size 不做移动端模拟，
 //       会按 ~980px 布局视口渲染再裁到窗口宽度，看起来像"内容被右侧截断"——
@@ -109,9 +109,34 @@ for (const a of act.split(';').filter(Boolean)) {
     await sleep(700)
   } else if (a.startsWith('mouse:')) {
     const [mx, my] = a.slice(6).split(',').map(Number)
+    await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: mx, y: my })
     await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: mx, y: my, button: 'left', clickCount: 1 })
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: mx, y: my, button: 'left', clickCount: 1 })
     await sleep(700)
+  } else if (a.startsWith('hover:')) {
+    // 纯悬停：只移鼠标不点击，用来测 :hover 动画 / tooltip
+    const [hx, hy] = a.slice(6).split(',').map(Number)
+    await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: hx, y: hy })
+    await sleep(900)
+  } else if (a.startsWith('media:')) {
+    // 模拟媒体特性，如 media:hover=none,pointer=coarse（测触屏设备下的样式分支）
+    const features = a
+      .slice(6)
+      .split(',')
+      .filter(Boolean)
+      .map((kv) => {
+        const [n, v] = kv.split('=')
+        return { name: n.trim(), value: (v || '').trim() }
+      })
+    await send('Emulation.setEmulatedMedia', { features })
+    await sleep(400)
+  } else if (a.startsWith('touch:')) {
+    // 触屏模拟：touch:1 打开 / touch:0 关闭。真机上 (hover: hover) 才会变 false
+    await send('Emulation.setTouchEmulationEnabled', {
+      enabled: a.slice(6).trim() !== '0',
+      maxTouchPoints: 5,
+    })
+    await sleep(400)
   } else if (a.startsWith('eval:')) {
     const v = (await send('Runtime.evaluate', { returnByValue: true, expression: a.slice(5) })).result.result.value
     console.log(`eval → ${JSON.stringify(v)}`)
