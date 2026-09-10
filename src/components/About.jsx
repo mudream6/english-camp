@@ -1,4 +1,5 @@
 import { about } from '../data.js'
+import Mark from './Mark.jsx'
 import Reveal from './Reveal.jsx'
 
 export default function About() {
@@ -18,8 +19,11 @@ export default function About() {
               </h2>
             </Reveal>
             <Reveal delay={120}>
-              <p className="mt-8 max-w-[560px] text-[15.5px] leading-[2] text-ink/75">{about.p1}</p>
+              <p className="mt-8 max-w-[560px] text-[15.5px] leading-[2] text-ink/75">
+                <Mark>{about.p1}</Mark>
+              </p>
               <p className="mt-5 max-w-[560px] text-[15.5px] leading-[2] text-ink/75">{about.p2}</p>
+              <p className="mt-5 max-w-[560px] text-[15.5px] leading-[2] text-ink/75">{about.p3}</p>
             </Reveal>
             <Reveal delay={200}>
               <a href="#courses" className="tlink mt-9">
