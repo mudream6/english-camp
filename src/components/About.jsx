@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { about } from '../data.js'
-import CampDetail from './CampDetail.jsx'
+import AboutDetail from './AboutDetail.jsx'
 import Mark from './Mark.jsx'
 import Modal from './Modal.jsx'
 import Reveal from './Reveal.jsx'
@@ -81,7 +81,7 @@ export default function About() {
       {/* 点「查看三周浸泡营具体由来」→ 居中详情弹窗：半透明遮罩压暗背景，
           点遮罩 / 右上关闭按钮 / ESC 都能关掉回到原页面 */}
       <Modal open={open} onClose={closeModal} labelledBy="camp-detail-title">
-        <CampDetail onClose={closeModal} />
+        <AboutDetail />
       </Modal>
     </section>
   )

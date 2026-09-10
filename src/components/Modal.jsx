@@ -35,7 +35,7 @@ export default function Modal({ open, onClose, labelledBy, children }) {
         aria-hidden="true"
       />
       {/* 面板 */}
-      <div className="modal-panel relative flex max-h-[86svh] w-full max-w-[760px] flex-col overflow-hidden rounded-[22px] border border-line bg-paper shadow-[0_40px_90px_-30px_rgba(7,7,34,0.6)]">
+      <div className="modal-panel relative flex max-h-[90svh] w-full max-w-[880px] flex-col overflow-hidden rounded-[24px] border border-line bg-paper shadow-[0_40px_90px_-30px_rgba(7,7,34,0.6)]">
         <button
           type="button"
           onClick={onClose}
@@ -47,7 +47,7 @@ export default function Modal({ open, onClose, labelledBy, children }) {
             <path d="M6 6l12 12M18 6L6 18" />
           </svg>
         </button>
-        <div className="overflow-y-auto overscroll-contain p-7 pr-16 sm:p-10 sm:pr-24">{children}</div>
+        <div className="overflow-y-auto overscroll-contain px-7 py-8 pr-16 sm:px-12 sm:py-12 sm:pr-24">{children}</div>
       </div>
     </div>
   )
