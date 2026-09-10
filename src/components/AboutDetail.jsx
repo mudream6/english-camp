@@ -48,9 +48,9 @@ export default function AboutDetail() {
               className="aspect-[3/2] w-full object-cover"
             />
             {p.credit && (
-              <figcaption className="photo-caption pointer-events-none bg-night/90 px-5 py-3 text-center text-paper shadow-[0_18px_40px_-18px_rgba(7,7,34,0.9)]">
+              <figcaption className="photo-caption pointer-events-none bg-white px-5 py-3 text-center text-ink shadow-[0_16px_34px_-16px_rgba(7,7,34,0.55)]">
                 <span className="block text-[14.5px] font-bold leading-[1.3]">{yu.name}</span>
-                <span className="mt-[6px] block text-[12.5px] font-medium leading-[1.7] text-paper/80">
+                <span className="mt-[6px] block text-[12.5px] font-medium leading-[1.7] text-ink/65">
                   {yu.titles}
                 </span>
               </figcaption>
