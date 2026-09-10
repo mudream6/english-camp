@@ -2,7 +2,7 @@ import { hero } from '../data.js'
 
 export default function Hero() {
   return (
-    <section id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden">
+    <section id="top" className="relative flex min-h-[80svh] flex-col overflow-hidden">
       {/* 低饱和环境光斑（静态渐变，无动画） */}
       <div
         aria-hidden
