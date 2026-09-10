@@ -58,7 +58,7 @@ export default function Nav() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href={nav.cta.href} className="btn btn-primary btn-sm hidden sm:inline-flex">
+          <a href={nav.cta.href} className="btn btn-primary nav-cta hidden shrink-0 sm:inline-flex">
             {nav.cta.label}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -88,12 +88,6 @@ export default function Nav() {
               />
             </span>
           </button>
-          {/* 右上角商标小标（同一 logo 的小号用法） */}
-          <img
-            src={logoUrl}
-            alt="TIFSC® 注册商标"
-            className="hidden h-[22px] w-auto md:block"
-          />
         </div>
       </div>
 
