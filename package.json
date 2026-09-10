@@ -1,9 +1,9 @@
 {
-  "name": "nova-english-site",
+  "name": "tifsc-hainan-english-camp",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
-  "description": "诺瓦英语 Nova English — 全外教英语训练营 企业宣传官网 (React + Vite + TailwindCSS)",
+  "description": "TIFSC 海南英语村 — 三周全外教沉浸式口语浸泡营 企业宣传官网 (React + Vite + TailwindCSS)",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
