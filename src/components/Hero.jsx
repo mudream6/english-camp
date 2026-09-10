@@ -1,6 +1,9 @@
+import { Fragment } from 'react'
 import { hero } from '../data.js'
 
 export default function Hero() {
+  // kicker 里的「®」单独渲染成小号上标商标符号
+  const kickerParts = hero.kicker.split('®')
   return (
     <section id="top" className="relative flex min-h-[60svh] flex-col overflow-hidden">
       {/* 低饱和环境光斑（静态渐变，无动画） */}
@@ -19,7 +22,14 @@ export default function Hero() {
           className="h-anim kicker text-[11.5px] sm:text-[12.5px]"
           style={{ animationDelay: '80ms' }}
         >
-          <span className="zh">{hero.kicker}</span>
+          <span className="zh">
+            {kickerParts.map((part, i) => (
+              <Fragment key={i}>
+                {part}
+                {i < kickerParts.length - 1 && <sup className="reg">®</sup>}
+              </Fragment>
+            ))}
+          </span>
         </p>
 
         {/* 斜体衬线英文引句 */}

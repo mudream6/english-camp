@@ -161,6 +161,15 @@
   margin-left: -4px;
 }
 
+/* kicker 里的商标小标：小号 + 上标，紧贴前字 */
+.kicker .reg {
+  font-size: 0.6em;
+  vertical-align: 0.58em;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  margin-left: 0.04em;
+}
+
 /* 深色底上的 kicker 变体 */
 .kicker-dark {
   color: rgba(247, 245, 239, 0.55);

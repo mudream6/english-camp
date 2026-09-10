@@ -23,7 +23,7 @@ export const nav = {
 }
 
 export const hero = {
-  kicker: 'TIFSC 海南英语村 · 三周全外教沉浸式口语浸泡营',
+  kicker: 'TIFSC® 海南英语村 · 三周全封浸®外语俱乐部',
   leadIt: 'English is a skill you build — not a subject you study.',
   line1: '我们只做一件事：',
   line2a: '把英语从“学科”练成',
