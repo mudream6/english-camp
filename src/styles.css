@@ -233,7 +233,7 @@ video {
 }
 .cue-line {
   width: 1px;
-  height: 56px;
+  height: 30px;
   background: linear-gradient(
     to bottom,
     color-mix(in srgb, var(--color-ink) 30%, transparent),
