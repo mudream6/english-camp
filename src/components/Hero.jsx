@@ -14,10 +14,10 @@ export default function Hero() {
         }}
       />
 
-      <div className="shell relative z-10 flex flex-1 flex-col items-center justify-center pt-[96px] pb-10 text-center">
+      <div className="shell relative z-10 flex flex-1 flex-col items-center justify-center pt-[94.5px] pb-10 text-center sm:pt-[90.7px]">
         {/* kicker */}
         <p
-          className="h-anim kicker text-[11.5px] sm:text-[12.5px]"
+          className="h-anim kicker kicker-hero"
           style={{ animationDelay: '80ms' }}
         >
           <span className="zh">

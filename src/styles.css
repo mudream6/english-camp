@@ -161,6 +161,16 @@
   margin-left: -4px;
 }
 
+/* Hero 首行小字：比通用 .kicker 大一号（只作用于 Hero，其他板块仍是 12px） */
+.kicker.kicker-hero {
+  font-size: 13px; /* 手机：一行放得下（14px 会折成两行） */
+}
+@media (min-width: 640px) {
+  .kicker.kicker-hero {
+    font-size: 15.5px;
+  }
+}
+
 /* 商标小标：小号 + 上标 ®（Hero kicker / 标题 / 正文通用，配合 <Mark> 使用） */
 .reg {
   font-size: 0.6em;
