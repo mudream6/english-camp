@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { brand, contact } from '../data.js'
 import Reveal from './Reveal.jsx'
 
@@ -20,6 +19,24 @@ const CONTACT_ICONS = {
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
     </>
   ),
+  phone: (
+    <>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </>
+  ),
+  mail: (
+    <>
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m22 7-10 6L2 7" />
+    </>
+  ),
+  douyin: (
+    <>
+      <path d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+    </>
+  ),
   users: (
     <>
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -29,81 +46,68 @@ const CONTACT_ICONS = {
   ),
 }
 
-/* 纯前端预约表单：提交时组装 mailto 唤起邮件客户端。
-   接入第三方表单：在 data.js contact.leadForm.embedUrl 填入 iframe 地址即可整体替换。 */
-function LeadForm() {
-  const { leadForm } = contact
-  const [sent, setSent] = useState(false)
-  const { fields } = leadForm
-
-  if (leadForm.embedUrl) {
-    return (
-      <div className="overflow-hidden rounded-[24px] border border-cream/10 bg-cream/5">
-        <iframe src={leadForm.embedUrl} title="预约登记表单" className="h-[560px] w-full" loading="lazy" />
-      </div>
-    )
-  }
-
-  const onSubmit = (e) => {
-    e.preventDefault()
-    const fd = new FormData(e.target)
-    const lines = [
-      `姓名：${fd.get('name') || '-'}`,
-      `联系电话：${fd.get('phone') || '-'}`,
-      `微信号：${fd.get('wechat') || '-'}`,
-      `想了解的内容：${fd.get('note') || '-'}`,
-    ]
-    const subject = `报名咨询 · TIFSC 三周浸泡营（${fd.get('name') || '待定'}）`
-    const body = lines.join('\n')
-    window.location.href = `mailto:${leadForm.mailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    setSent(true)
-    setTimeout(() => setSent(false), 4000)
-  }
+/* 报名渠道卡：企业要求客户直接联系，原预约表单已下线（2026-09）。
+   手机号 / 企业邮箱可直接点按，抖音账号名点开即进入主页。 */
+function DirectContact() {
+  const { direct } = contact
+  const { douyin } = direct
 
   return (
-    <form onSubmit={onSubmit} className="rounded-[26px] border border-cream/10 bg-cream/4 p-7 sm:p-9">
-      <h3 className="text-[20px] font-bold text-cream">预约报名 · 三周浸泡营</h3>
-      <p className="mt-1.5 text-[13px] leading-relaxed text-cream/45">
-        新一期 2026 年 10 月 9 日开营，面向全社会招生
-      </p>
+    <div className="rounded-[26px] border border-cream/10 bg-cream/4 p-7 sm:p-9">
+      <h3 className="text-[20px] font-bold text-cream">{direct.title}</h3>
+      <p className="mt-1.5 text-[13px] leading-relaxed text-cream/45">{direct.note}</p>
 
-      <div className="mt-7 grid gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="lf-name" className="mb-2 block text-[12px] font-medium text-cream/50">
-            {fields.name} <span className="text-brand">*</span>
-          </label>
-          <input id="lf-name" name="name" required className="field" placeholder="怎么称呼你" />
-        </div>
-        <div>
-          <label htmlFor="lf-phone" className="mb-2 block text-[12px] font-medium text-cream/50">
-            {fields.phone} <span className="text-brand">*</span>
-          </label>
-          <input id="lf-phone" name="phone" type="tel" required className="field" placeholder="方便联系的手机号" />
-        </div>
-        <div>
-          <label htmlFor="lf-wechat" className="mb-2 block text-[12px] font-medium text-cream/50">
-            {fields.wechat}
-          </label>
-          <input id="lf-wechat" name="wechat" className="field" placeholder="选填，便于顾问添加你" />
-        </div>
-        <div className="sm:col-span-2">
-          <label htmlFor="lf-note" className="mb-2 block text-[12px] font-medium text-cream/50">
-            {fields.note}
-          </label>
-          <textarea id="lf-note" name="note" rows="3" className="field" placeholder="例如：想了解营期安排 / 当前听力词汇量大概水平" />
-        </div>
-      </div>
+      <ul className="mt-7 space-y-7">
+        {direct.rows.map((r) => (
+          <li key={r.label} className="flex items-start gap-4">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-cream/12 bg-cream/4 text-cream/80">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                {CONTACT_ICONS[r.icon]}
+              </svg>
+            </span>
+            <div className="min-w-0 pt-0.5">
+              <p className="text-[11.5px] font-semibold uppercase tracking-[0.18em] text-cream/40">{r.label}</p>
+              <a
+                href={r.href}
+                className="mt-1.5 inline-block break-all text-[17px] font-semibold text-cream underline decoration-cream/20 underline-offset-[6px] transition-colors hover:text-white hover:decoration-cream/70"
+              >
+                {r.value}
+              </a>
+              <p className="mt-1 text-[12.5px] leading-relaxed text-cream/35">{r.hint}</p>
+            </div>
+          </li>
+        ))}
 
-      <button type="submit" className="btn btn-primary mt-6 w-full">
-        提交报名意向
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-      <p className="mt-3.5 text-center text-[12px] leading-relaxed text-cream/35">
-        {sent ? '已为你打开邮件客户端，发送即完成登记 ✓' : leadForm.submitNote}
-      </p>
-    </form>
+        <li className="flex items-start gap-4">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-cream/12 bg-cream/4 text-cream/80">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              {CONTACT_ICONS[douyin.icon]}
+            </svg>
+          </span>
+          <div className="min-w-0 pt-0.5">
+            <p className="text-[11.5px] font-semibold uppercase tracking-[0.18em] text-cream/40">{douyin.label}</p>
+            <ul className="mt-2 space-y-2.5">
+              {douyin.accounts.map((a) => (
+                <li key={a}>
+                  <a
+                    href={douyin.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-1.5 text-[16px] font-semibold text-cream transition-colors hover:text-white"
+                  >
+                    {a}
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-cream/45 transition-colors group-hover:text-white">
+                      <path d="M7 17 17 7M9 7h8v8" />
+                    </svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-[12.5px] leading-relaxed text-cream/35">{douyin.hint}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
   )
 }
 
@@ -155,9 +159,9 @@ export default function Footer() {
               </div>
             </Reveal>
 
-            {/* 右：预约表单（第三方表单嵌入位） */}
+            {/* 右：报名渠道（客户直接联系） */}
             <Reveal delay={220}>
-              <LeadForm />
+              <DirectContact />
             </Reveal>
           </div>
         </div>

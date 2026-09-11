@@ -201,18 +201,33 @@ export const contact = {
   en: 'Contact',
   zh: '联系我们',
   title: '2026 年 10 月 9 日，新一期开营',
-  sub: '三周全封闭外教浸泡营，面向全社会招生。填写下方表单预约报名，开营前将与你确认入营事宜。',
-  // ⏳ 待补充：真实微信 / 电话 / 邮箱；表单暂以"示例邮箱"完成纯前端提交。
-  // TODO 第三方表单接入：leadForm.embedUrl 填入 iframe 嵌入地址后，留言区自动切换为嵌入表单。
-  leadForm: {
-    embedUrl: '',
-    mailTo: 'contact@tifsc.example.com',
-    submitNote: '示例版提交通道：将唤起邮件客户端发送至示例邮箱，正式报名渠道上线后替换',
-    fields: {
-      name: '姓名',
-      phone: '联系电话',
-      wechat: '微信号（选填）',
-      note: '想了解的内容（选填）',
+  sub: '三周全封闭外教浸泡营，面向全社会招生。报名咨询请直接联系下列渠道，开营前将与你确认入营事宜。',
+  // 报名渠道：企业要求客户直接联系，原预约表单已下线（2026-09）
+  direct: {
+    title: '直接联系我们 · 报名咨询',
+    note: '新一期 2026 年 10 月 9 日开营，面向全社会招生',
+    rows: [
+      {
+        icon: 'phone',
+        label: '手机号',
+        value: '13307547401',
+        href: 'tel:13307547401',
+        hint: '点击号码即可拨打',
+      },
+      {
+        icon: 'mail',
+        label: '企业邮箱',
+        value: '1304047210@qq.com',
+        href: 'mailto:1304047210@qq.com',
+        hint: '点击即可发送邮件',
+      },
+    ],
+    douyin: {
+      icon: 'douyin',
+      label: '抖音搜索',
+      accounts: ['海南英语村丁杰森', 'TIFSC海南英语村'],
+      url: 'https://www.douyin.com/user/MS4wLjABAAAAaJQ5ja3wGJ2JuGYjxcYGw6MATTweJnphlv4E7t5jt4rsxPaQzIi7F0htGt7936vg',
+      hint: '点击账号名可直接打开抖音主页',
     },
   },
   items: [
@@ -237,8 +252,8 @@ export const contact = {
     {
       icon: 'users',
       label: '报名渠道',
-      value: '下方预约表单',
-      note: '微信 / 电话咨询通道待公布',
+      value: '手机 · 邮箱 · 抖音',
+      note: '见右侧渠道卡，点击即可直接联系',
     },
   ],
   copyright: '© 2026 TIFSC 海南英语村 · Hainan English Village 保留所有权利',
