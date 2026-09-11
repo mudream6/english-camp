@@ -186,41 +186,43 @@
 }
 
 /* ============================================================
-   定位宣言横幅：悬停时从正中冒出一个浅蓝圆，迅速向外铺满整块，
-   底色由藏青转浅蓝、文字由暖白转藏青；移开后圆缩回原样。
-   （::before 用 z-index:-1 —— 在面板自身底色之上、正文之下，不动 JSX 结构）
+   定位宣言横幅：桌面端悬停时从正中冒出一个浅蓝圆，向外铺满整块，
+   底色由藏青转浅蓝、文字由暖白转藏青；移开后圆缩回、文字复原。
+   ▸ 做法照 nomu.store 的按钮：真实圆 + transform: scale()（走合成层，
+     与 clip-path 不同，既不掉帧也不会被系统「减少动效」压成瞬间完成）
+   ▸ 圆直径 = 面板高度（aspect-ratio:1），再 scale 到 7 倍 → 必盖过对角线
+   ▸ 文字变色只留 0.08s 延迟（几乎同时），不做「等圆铺满再变色」的等待
    ============================================================ */
 .sweep-panel {
   isolation: isolate;
 }
-.sweep-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: var(--color-brand-light);
-  /* circle() 的百分比以 sqrt(w²+h²)/√2 为基准，71% 恰好到达四角 */
-  clip-path: circle(0% at 50% 50%);
-  transition: clip-path 0.62s var(--ease-smooth);
-  pointer-events: none;
-}
-.sweep-panel:hover::before,
-.sweep-panel:focus-within::before {
-  clip-path: circle(76% at 50% 50%);
-}
-.sweep-panel p {
-  transition: color 0.3s var(--ease-smooth);
-}
-.sweep-panel:hover p,
-.sweep-panel:focus-within p {
-  color: var(--color-brand);
-  transition-delay: 0.28s; /* 先让圆铺开，文字随后转深蓝（对应「然后按钮变色」） */
-}
-@media (prefers-reduced-motion: reduce) {
-  .sweep-panel::before,
+
+@media (hover: hover) and (min-width: 768px) {
+  .sweep-panel::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    aspect-ratio: 1;
+    z-index: -1;
+    border-radius: 50%;
+    background: var(--color-brand-light);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    pointer-events: none;
+    will-change: transform;
+  }
+  .sweep-panel:hover::before,
+  .sweep-panel:focus-within::before {
+    transform: translate(-50%, -50%) scale(7);
+  }
   .sweep-panel p {
-    transition-duration: 0.01s;
+    transition: color 0.3s var(--ease-smooth) 0.08s;
+  }
+  .sweep-panel:hover p,
+  .sweep-panel:focus-within p {
+    color: var(--color-brand);
   }
 }
 
