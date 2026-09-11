@@ -239,7 +239,7 @@ export const contact = {
       icon: 'pin',
       label: '营地地点',
       value: '海南省陵水县海归小镇',
-      note: '海南英语村营地',
+      note: '具体营地地址随报名通知发送',
     },
     {
       icon: 'chat',
