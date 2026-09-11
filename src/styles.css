@@ -136,6 +136,54 @@
   font-size: 14px;
 }
 
+/* ============================================================
+   深蓝按钮 Border Glow（移植 reactbits BorderGlow，仅桌面端）
+   光标靠近按钮边缘时：内侧沿光标方位亮起一圈高光 + 外侧同方向柔和辉光。
+   --eg：光标离边缘的接近度 0–100；--ca：光标方位角 —— 由 main.jsx 的指针监听写入。
+   触屏 / 手机不启用（hover:hover 与 min-width 都不满足）。
+   ============================================================ */
+@media (hover: hover) and (min-width: 768px) {
+  .btn-primary {
+    --eg: 0;
+    --ca: 45deg;
+    --glow-sens: 30;         /* 接近度低于此值完全不亮 */
+    --glow-hsl: 40 90% 82%;  /* 暖光，与「暖纸白 + 藏青」同族；换色只改这一行 */
+    position: relative;
+    isolation: isolate;
+  }
+  .btn-primary::before,
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: calc((var(--eg) - var(--glow-sens)) / (100 - var(--glow-sens)));
+    transition: opacity 0.4s var(--ease-smooth);
+  }
+  /* 外侧辉光（z-index 负值 → 永远在按钮底色之下，只从轮廓外露出来） */
+  .btn-primary::before {
+    inset: -2px;
+    z-index: -1;
+    box-shadow:
+      0 0 8px 0 hsl(var(--glow-hsl) / 45%),
+      0 0 18px 2px hsl(var(--glow-hsl) / 28%),
+      0 0 34px 4px hsl(var(--glow-hsl) / 14%),
+      0 0 56px 6px hsl(var(--glow-hsl) / 7%);
+    mask-image: conic-gradient(from var(--ca) at center, #000 2%, transparent 24%, transparent 76%, #000 98%);
+  }
+  /* 内侧亮边 + 内晕（贴着轮廓 1.5px，文字有内边距，不会压字） */
+  .btn-primary::after {
+    inset: 0;
+    z-index: 2;
+    box-shadow:
+      inset 0 0 0 1.5px hsl(var(--glow-hsl) / 92%),
+      inset 0 0 6px 0 hsl(var(--glow-hsl) / 42%),
+      inset 0 0 14px 0 hsl(var(--glow-hsl) / 16%);
+    mask-image: conic-gradient(from var(--ca) at center, #000 3%, transparent 26%, transparent 74%, #000 97%);
+    mix-blend-mode: plus-lighter;
+  }
+}
+
 /* ---------- 文本辅助 ---------- */
 /* 区块小标签：短横线 + 大写英文 + 中文 */
 .kicker {
