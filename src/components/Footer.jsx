@@ -138,21 +138,39 @@ export default function Footer() {
 
           <div className="mt-14 grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
             {/* 左：营地 / 咨询信息 */}
-            <Reveal delay={120}>
-              <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+            <Reveal delay={120} className="h-full">
+              {/* 手机/平板：原来的图标 + 文字排布（保持不变）；lg 及以上：放大成四张卡片并撑满左栏高度 */}
+              <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:h-full lg:auto-rows-fr lg:gap-6">
                 {contact.items.map((it) => (
-                  <div key={it.icon} className="flex items-start gap-4">
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-cream/12 bg-cream/4 text-cream/80">
-                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  <div
+                    key={it.icon}
+                    className="flex items-start gap-4 lg:h-full lg:flex-col lg:gap-0 lg:rounded-[22px] lg:border lg:border-cream/10 lg:bg-cream/4 lg:p-8"
+                  >
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-cream/12 bg-cream/4 text-cream/80 lg:h-14 lg:w-14">
+                      <svg
+                        width="19"
+                        height="19"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lg:h-[23px] lg:w-[23px]"
+                      >
                         {CONTACT_ICONS[it.icon]}
                       </svg>
                     </span>
-                    <div className="min-w-0 pt-0.5">
-                      <p className="text-[11.5px] font-semibold uppercase tracking-[0.18em] text-cream/40">
+                    <div className="min-w-0 pt-0.5 lg:pt-0">
+                      <p className="text-[11.5px] font-semibold uppercase tracking-[0.18em] text-cream/40 lg:mt-7 lg:text-[12.5px]">
                         {it.label}
                       </p>
-                      <p className="mt-1.5 text-[16px] font-semibold text-cream">{it.value}</p>
-                      <p className="mt-1 text-[12.5px] leading-relaxed text-cream/35">{it.note}</p>
+                      <p className="mt-1.5 text-[16px] font-semibold text-cream lg:mt-3 lg:text-[22px] lg:leading-[1.35]">
+                        {it.value}
+                      </p>
+                      <p className="mt-1 text-[12.5px] leading-relaxed text-cream/35 lg:mt-3 lg:text-[14px] lg:leading-[1.8]">
+                        {it.note}
+                      </p>
                     </div>
                   </div>
                 ))}
