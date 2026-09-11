@@ -72,7 +72,7 @@ export default function Outcomes() {
 
         {/* ── 定位宣言横幅 ── */}
         <Reveal delay={80}>
-          <div className="relative mt-20 overflow-hidden rounded-[28px] bg-brand px-8 py-12 text-center sm:px-14 sm:py-16">
+          <div className="sweep-panel relative mt-20 overflow-hidden rounded-[28px] bg-brand px-8 py-12 text-center sm:px-14 sm:py-16">
             <p className="mx-auto max-w-[760px] text-[clamp(1.4rem,2.8vw,2.15rem)] font-extrabold leading-[1.5] tracking-[-0.01em] text-cream">
               {closing}
             </p>

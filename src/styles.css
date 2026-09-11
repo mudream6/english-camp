@@ -19,6 +19,7 @@
   --color-brand-deep: #00003d;
   --color-brand-soft: rgba(0, 0, 94, 0.07);
   --color-mist: #e4e5f2;
+  --color-brand-light: #cbddf3;  /* 宣言面板悬停铺开的浅蓝底 */
 
   /* 深色收束页（藏青调，与 logo 同族） */
   --color-night: #0c0c33;
@@ -181,6 +182,45 @@
       inset 0 0 14px 0 hsl(var(--glow-hsl) / 16%);
     mask-image: conic-gradient(from var(--ca) at center, #000 3%, transparent 26%, transparent 74%, #000 97%);
     mix-blend-mode: plus-lighter;
+  }
+}
+
+/* ============================================================
+   定位宣言横幅：悬停时从正中冒出一个浅蓝圆，迅速向外铺满整块，
+   底色由藏青转浅蓝、文字由暖白转藏青；移开后圆缩回原样。
+   （::before 用 z-index:-1 —— 在面板自身底色之上、正文之下，不动 JSX 结构）
+   ============================================================ */
+.sweep-panel {
+  isolation: isolate;
+}
+.sweep-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--color-brand-light);
+  /* circle() 的百分比以 sqrt(w²+h²)/√2 为基准，71% 恰好到达四角 */
+  clip-path: circle(0% at 50% 50%);
+  transition: clip-path 0.62s var(--ease-smooth);
+  pointer-events: none;
+}
+.sweep-panel:hover::before,
+.sweep-panel:focus-within::before {
+  clip-path: circle(76% at 50% 50%);
+}
+.sweep-panel p {
+  transition: color 0.3s var(--ease-smooth);
+}
+.sweep-panel:hover p,
+.sweep-panel:focus-within p {
+  color: var(--color-brand);
+  transition-delay: 0.28s; /* 先让圆铺开，文字随后转深蓝（对应「然后按钮变色」） */
+}
+@media (prefers-reduced-motion: reduce) {
+  .sweep-panel::before,
+  .sweep-panel p {
+    transition-duration: 0.01s;
   }
 }
 
