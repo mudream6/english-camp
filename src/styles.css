@@ -192,9 +192,9 @@
    ▸ 圆直径 = 面板高度（aspect-ratio:1），scale 0 → 7（7 足够盖过任意宽度的对角线）
    ▸ 盒子高度是定死的：圆直径一旦超过面板高度，上下就被裁掉，只能靠左右两侧
      继续外扩来"读"这个圆 —— 所以把「看得出是圆」的那段放在前 ~70% 时长里：
-     1.3s + linear，直径 0 → 1297px（铺满整宽）在 0.91s 处完成（= 前 70%），
-     剩下的 0.39s 只补四个圆角。任何加速/减速曲线都会把这段压到 0.1s 内 → 看不见。
-   ▸ 文字颜色延迟 0.6s 才转藏青：此时圆直径 ≈ 1000px，已经盖住文字区（±378px），
+     0.9s + linear，直径 0 → 1297px（铺满整宽）在 0.63s 处完成（= 前 70%），
+     剩下的 0.27s 只补四个圆角。任何加速/减速曲线都会把这段压到 0.1s 内 → 看不见。
+   ▸ 文字颜色延迟 0.42s 才转藏青：此时圆直径 ≈ 760px，刚好盖住文字区（±378px），
      不会出现"藏青字压在藏青底上看不见"。移开时同样等圆缩下去再变回暖白。
    ▸ 系统「减少动效」开着 → 不做扩散，直接切换颜色（见文件末尾的 reduce 兜底）
    ============================================================ */
@@ -214,7 +214,7 @@
     border-radius: 50%;
     background: var(--color-brand-light);
     transform: translate(-50%, -50%) scale(0);
-    transition: transform 1.3s linear;
+    transition: transform 0.9s linear;
     pointer-events: none;
     will-change: transform;
   }
@@ -222,15 +222,15 @@
   .sweep-panel:focus-within::before {
     transform: translate(-50%, -50%) scale(7);
   }
-  /* 收：等圆缩到文字区以下（约 0.45s）再变回暖白 */
+  /* 收：等圆缩到文字区以下（约 0.35s）再变回暖白 */
   .sweep-panel p {
-    transition: color 0.3s var(--ease-smooth) 0.45s;
+    transition: color 0.25s var(--ease-smooth) 0.35s;
   }
-  /* 放：圆铺开约 70% 之后才开始转藏青 */
+  /* 放：圆铺到覆盖文字区（约 0.42s / 直径 756px）之后才开始转藏青 */
   .sweep-panel:hover p,
   .sweep-panel:focus-within p {
     color: var(--color-brand);
-    transition-delay: 0.6s;
+    transition-delay: 0.42s;
   }
 }
 
