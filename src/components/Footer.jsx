@@ -118,14 +118,14 @@ function DirectContact() {
             </p>
             <ul className="mt-2 space-y-2.5 lg:mt-2.5 lg:space-y-3">
               {douyin.accounts.map((a) => (
-                <li key={a}>
+                <li key={a.name}>
                   <a
-                    href={douyin.url}
+                    href={a.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-1.5 text-[16px] font-semibold text-cream transition-colors hover:text-white lg:text-[20px]"
                   >
-                    {a}
+                    {a.name}
                     <svg
                       width="13"
                       height="13"

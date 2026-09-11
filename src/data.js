@@ -214,8 +214,17 @@ export const contact = {
     douyin: {
       icon: 'douyin',
       label: '抖音搜索',
-      accounts: ['海南英语村丁杰森', 'TIFSC海南英语村'],
-      url: 'https://www.douyin.com/user/MS4wLjABAAAAaJQ5ja3wGJ2JuGYjxcYGw6MATTweJnphlv4E7t5jt4rsxPaQzIi7F0htGt7936vg',
+      // 两个账号各挂自己的真实主页链接（企业提供）
+      accounts: [
+        {
+          name: '海南英语村丁杰森',
+          url: 'https://www.douyin.com/user/MS4wLjABAAAAaJQ5ja3wGJ2JuGYjxcYGw6MATTweJnphlv4E7t5jt4rsxPaQzIi7F0htGt7936vg',
+        },
+        {
+          name: 'TIFSC海南英语村',
+          url: 'https://www.douyin.com/user/MS4wLjABAAAA7G5Vzk7WobSAJvWQa-vWsGBXCQa1QTrSVGERZYHYDgA',
+        },
+      ],
       hint: '点击账号名可直接打开抖音主页',
     },
   },
