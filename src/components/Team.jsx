@@ -15,9 +15,6 @@ export default function Team() {
               {team.title}
             </h2>
             <p className="mt-5 max-w-[560px] text-[15px] leading-[1.9] text-mut">{team.sub}</p>
-            <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-[13px] font-medium text-mut">
-              {team.notice}
-            </p>
           </Reveal>
         </div>
 
