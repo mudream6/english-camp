@@ -188,9 +188,13 @@
 /* ============================================================
    定位宣言横幅：桌面端悬停时从正中冒出一个浅蓝圆，向外铺满整块，
    底色由藏青转浅蓝、文字由暖白转藏青；移开后圆缩回、文字复原。
-   ▸ 做法照 nomu.store 的按钮：真实圆 + transform: scale()（走合成层，
-     与 clip-path 不同，既不掉帧也不会被系统「减少动效」压成瞬间完成）
-   ▸ 圆直径 = 面板高度（aspect-ratio:1），再 scale 到 7 倍 → 必盖过对角线
+   ▸ 做法照 nomu.store 的按钮：真实圆 + transform: scale()（走合成层，不掉帧，
+     也不会被系统「减少动效」压成瞬间）
+   ▸ 圆直径 = 面板高度（aspect-ratio:1），scale 0 → 7（盖过对角线）
+   ▸ 关键：必须用 1.3s + linear 匀速长大。横幅是 1297×231 的宽扁形，
+     圆直径超过 231 之后左右就只剩"两侧变窄"，所以减速/加速曲线都会把
+     「看得出是个圆」的那段压到 0.1s 以内 —— 肉眼等于"没有圆，只是变色"。
+     匀速下 0→690px（仍是明显的圆）占 55% 时长 ≈ 0.7s，肉眼清清楚楚。
    ▸ 文字变色只留 0.08s 延迟（几乎同时），不做「等圆铺满再变色」的等待
    ============================================================ */
 .sweep-panel {
@@ -209,7 +213,7 @@
     border-radius: 50%;
     background: var(--color-brand-light);
     transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: transform 1.3s linear;
     pointer-events: none;
     will-change: transform;
   }
