@@ -83,15 +83,15 @@ function DirectContact() {
               <p className="text-[11.5px] font-semibold uppercase tracking-[0.18em] text-cream/40 lg:text-[12.5px]">
                 {r.label}
               </p>
-              <a
-                href={r.href}
-                className="mt-1.5 inline-block break-all text-[17px] font-semibold text-cream underline decoration-cream/20 underline-offset-[6px] transition-colors hover:text-white hover:decoration-cream/70 lg:mt-2.5 lg:text-[22px]"
-              >
+              {/* 手机号 / 邮箱：纯展示，不跳转 */}
+              <p className="mt-1.5 break-all text-[17px] font-semibold text-cream lg:mt-2.5 lg:text-[22px]">
                 {r.value}
-              </a>
-              <p className="mt-1 text-[12.5px] leading-relaxed text-cream/35 lg:mt-2.5 lg:text-[14px]">
-                {r.hint}
               </p>
+              {r.hint && (
+                <p className="mt-1 text-[12.5px] leading-relaxed text-cream/35 lg:mt-2.5 lg:text-[14px]">
+                  {r.hint}
+                </p>
+              )}
             </div>
           </li>
         ))}

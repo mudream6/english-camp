@@ -206,21 +206,10 @@ export const contact = {
   direct: {
     title: '直接联系我们 · 报名咨询',
     note: '新一期 2026 年 10 月 9 日开营，面向全社会招生',
+    // 手机号 / 邮箱只做展示，不挂 tel: / mailto: 跳转（企业要求）
     rows: [
-      {
-        icon: 'phone',
-        label: '手机号',
-        value: '13307547401',
-        href: 'tel:13307547401',
-        hint: '点击号码即可拨打',
-      },
-      {
-        icon: 'mail',
-        label: '企业邮箱',
-        value: '1304047210@qq.com',
-        href: 'mailto:1304047210@qq.com',
-        hint: '点击即可发送邮件',
-      },
+      { icon: 'phone', label: '手机号', value: '13307547401' },
+      { icon: 'mail', label: '企业邮箱', value: '1304047210@qq.com' },
     ],
     douyin: {
       icon: 'douyin',
