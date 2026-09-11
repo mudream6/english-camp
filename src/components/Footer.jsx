@@ -53,57 +53,99 @@ function DirectContact() {
   const { douyin } = direct
 
   return (
-    <div className="rounded-[26px] border border-cream/10 bg-cream/4 p-7 sm:p-9">
-      <h3 className="text-[20px] font-bold text-cream">{direct.title}</h3>
-      <p className="mt-1.5 text-[13px] leading-relaxed text-cream/45">{direct.note}</p>
+    <div className="rounded-[26px] border border-cream/10 bg-cream/4 p-7 sm:p-9 lg:flex lg:h-full lg:flex-col lg:p-9">
+      <div>
+        <h3 className="text-[20px] font-bold text-cream lg:text-[23px]">{direct.title}</h3>
+        <p className="mt-1.5 text-[13px] leading-relaxed text-cream/45 lg:mt-2.5 lg:text-[14.5px]">
+          {direct.note}
+        </p>
+      </div>
 
-      <ul className="mt-7 space-y-7">
+      <ul className="mt-7 space-y-7 lg:mt-6 lg:flex lg:flex-1 lg:flex-col lg:justify-around lg:space-y-0">
         {direct.rows.map((r) => (
-          <li key={r.label} className="flex items-start gap-4">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-cream/12 bg-cream/4 text-cream/80">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <li key={r.label} className="flex items-start gap-4 lg:gap-5">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-cream/12 bg-cream/4 text-cream/80 lg:h-14 lg:w-14">
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lg:h-[23px] lg:w-[23px]"
+              >
                 {CONTACT_ICONS[r.icon]}
               </svg>
             </span>
-            <div className="min-w-0 pt-0.5">
-              <p className="text-[11.5px] font-semibold uppercase tracking-[0.18em] text-cream/40">{r.label}</p>
+            <div className="min-w-0 pt-0.5 lg:pt-0">
+              <p className="text-[11.5px] font-semibold uppercase tracking-[0.18em] text-cream/40 lg:text-[12.5px]">
+                {r.label}
+              </p>
               <a
                 href={r.href}
-                className="mt-1.5 inline-block break-all text-[17px] font-semibold text-cream underline decoration-cream/20 underline-offset-[6px] transition-colors hover:text-white hover:decoration-cream/70"
+                className="mt-1.5 inline-block break-all text-[17px] font-semibold text-cream underline decoration-cream/20 underline-offset-[6px] transition-colors hover:text-white hover:decoration-cream/70 lg:mt-2.5 lg:text-[22px]"
               >
                 {r.value}
               </a>
-              <p className="mt-1 text-[12.5px] leading-relaxed text-cream/35">{r.hint}</p>
+              <p className="mt-1 text-[12.5px] leading-relaxed text-cream/35 lg:mt-2.5 lg:text-[14px]">
+                {r.hint}
+              </p>
             </div>
           </li>
         ))}
 
-        <li className="flex items-start gap-4">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-cream/12 bg-cream/4 text-cream/80">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <li className="flex items-start gap-4 lg:gap-5">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-cream/12 bg-cream/4 text-cream/80 lg:h-14 lg:w-14">
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lg:h-[23px] lg:w-[23px]"
+            >
               {CONTACT_ICONS[douyin.icon]}
             </svg>
           </span>
-          <div className="min-w-0 pt-0.5">
-            <p className="text-[11.5px] font-semibold uppercase tracking-[0.18em] text-cream/40">{douyin.label}</p>
-            <ul className="mt-2 space-y-2.5">
+          <div className="min-w-0 pt-0.5 lg:pt-0">
+            <p className="text-[11.5px] font-semibold uppercase tracking-[0.18em] text-cream/40 lg:text-[12.5px]">
+              {douyin.label}
+            </p>
+            <ul className="mt-2 space-y-2.5 lg:mt-2.5 lg:space-y-3">
               {douyin.accounts.map((a) => (
                 <li key={a}>
                   <a
                     href={douyin.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-1.5 text-[16px] font-semibold text-cream transition-colors hover:text-white"
+                    className="group inline-flex items-center gap-1.5 text-[16px] font-semibold text-cream transition-colors hover:text-white lg:text-[20px]"
                   >
                     {a}
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-cream/45 transition-colors group-hover:text-white">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="shrink-0 text-cream/45 transition-colors group-hover:text-white lg:h-[16px] lg:w-[16px]"
+                    >
                       <path d="M7 17 17 7M9 7h8v8" />
                     </svg>
                   </a>
                 </li>
               ))}
             </ul>
-            <p className="mt-2 text-[12.5px] leading-relaxed text-cream/35">{douyin.hint}</p>
+            <p className="mt-2 text-[12.5px] leading-relaxed text-cream/35 lg:mt-2.5 lg:text-[14px]">
+              {douyin.hint}
+            </p>
           </div>
         </li>
       </ul>
@@ -136,7 +178,7 @@ export default function Footer() {
             <p className="mt-5 max-w-[560px] text-[15px] leading-[1.9] text-cream/55">{contact.sub}</p>
           </Reveal>
 
-          <div className="mt-14 grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+          <div className="mt-14 grid gap-14 lg:grid-cols-2 lg:gap-20">
             {/* 左：营地 / 咨询信息 */}
             <Reveal delay={120} className="h-full">
               {/* 手机/平板：原来的图标 + 文字排布（保持不变）；lg 及以上：放大成四张卡片并撑满左栏高度 */}
