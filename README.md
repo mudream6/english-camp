@@ -50,6 +50,35 @@ npm run preview    # 本地预览构建产物
 2. **ICP 备案号** → `contact.icp`（现为空，页脚不显示）
 3. 宣传语 / 具体数字口径如有出入，直接在 `data.js` 中改
 
+## 性能（2026-09 复查）
+
+单文件产物 `dist/index.html`：**1 个请求**、无外部 CSS/JS/图片依赖，双击即可打开。
+
+| 指标 | 优化前 | 优化后 |
+|---|---|---|
+| index.html | 676.6 kB | **522.2 kB** |
+| gzip 传输 | 377 kB | **264 kB** |
+| 其中字体（base64） | 100.1 kB（6 个子集） | **33.1 kB（只留 latin）** |
+| 其中图片（base64） | 296.1 kB | **210.0 kB** |
+
+做法：
+
+1. **字体只内联 latin 子集**：原来 `import '@fontsource-variable/manrope'` 会把 cyrillic / greek /
+   vietnamese / latin-ext 等 6 个子集全打进单文件；本站拉丁字符只用到 basic latin
+   （中文全走系统字体）→ 改为把 `manrope-latin-wght-normal.woff2`（24.8 kB）放进
+   `src/assets/fonts/`，在 `styles.css` 里手写一条 `@font-face`（字体 SIL OFL，
+   来源 @fontsource-variable/manrope）。
+2. **弹窗照片重压**：`src/assets/modal/*.webp` 由 920px / q78 改为 800px / q72
+   → 218.7 kB → 154.1 kB；实测弹窗内显示宽 437px、与原件 PSNR 36.9–40.7 dB（>35 dB 肉眼无差）。
+3. **吸顶导航不再监听 scroll**：改成 `IntersectionObserver` 观察页首 25px 的哨兵元素，
+   滚动过程零 JS。
+4. 项目**没有**视频、WebGL / canvas、GSAP —— 动画全部是 CSS `transform` / `opacity`
+   （加一处 rAF 节流的指针辉光）；滚动显现用 `IntersectionObserver`。
+
+可选的进一步优化（未做，需权衡）：把 4 张弹窗照片拆成 `dist/modal/*.webp` 单独文件、
+弹窗打开才加载（首屏再省约 200 kB 解码 / 85 kB gzip，代价是发布要连文件夹一起给）；
+React 19 换 preact/compat 可再省约 150 kB 解码（有回归风险）。
+
 ## 报名渠道（客户直接联系）
 
 按企业要求，预约表单已下线（2026-09），收束页右栏改为「直接联系我们」渠道卡，

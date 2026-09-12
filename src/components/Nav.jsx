@@ -6,11 +6,20 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
+  /* 吸顶状态：不监听 scroll（滚动时零 JS、零 setState），改成观察页首 25px 的哨兵元素；
+     哨兵离开视口 = 已滚动过 25px，与原来 window.scrollY > 24 等价 */
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const sentinel = document.createElement('div')
+    sentinel.setAttribute('aria-hidden', 'true')
+    sentinel.style.cssText =
+      'position:absolute;top:25px;left:0;width:1px;height:1px;pointer-events:none;visibility:hidden'
+    document.body.prepend(sentinel)
+    const io = new IntersectionObserver(([e]) => setScrolled(!e.isIntersecting), { threshold: 0 })
+    io.observe(sentinel)
+    return () => {
+      io.disconnect()
+      sentinel.remove()
+    }
   }, [])
 
   // 移动端菜单展开时锁定滚动
