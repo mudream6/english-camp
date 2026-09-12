@@ -316,6 +316,21 @@
   font-weight: 400;
 }
 
+/* 项目介绍：企业资料里点明「重点标注」的字 / 数字（藏青加粗；数字再放大一档） */
+.hl {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--color-brand);
+  white-space: nowrap; /* 加重词组不跨行断开（如「不足2000」） */
+}
+.hl-num {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.16em;
+  letter-spacing: -0.01em;
+  color: var(--color-brand);
+}
+
 /* 横向长箭头文字链接（About 里改用 <button> 触发详情弹窗，外观保持一致） */
 .tlink {
   display: inline-flex;

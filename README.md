@@ -26,7 +26,7 @@ npm run preview    # 本地预览构建产物
     ├── App.jsx               # 页面骨架
     ├── data.js               # ★ 全站文案/数据 —— 全部企业资料在此
     ├── styles.css            # ★ 设计系统：色彩 token / 按钮 / 动效
-    └── components/           # Nav/Hero/About/Courses/Team/Outcomes/Footer/Reveal
+    └── components/           # Nav/Hero/About/Courses/Projects/Outcomes/Footer/Reveal
 ```
 
 ## 页面区块
@@ -36,7 +36,7 @@ npm run preview    # 本地预览构建产物
 | 全屏 Hero（定位主张 + CTA） | #top | `Hero.jsx` | 技能 vs 学科主张、营期要素 |
 | 机构介绍（背景 / 理念 / 数据带） | #about | `About.jsx` | 项目背景、教学核心理念、北大体系 |
 | 三周浸泡营（产品大卡 / 三级跃迁 / 差异化对比 / 入营要求） | #courses | `Courses.jsx` | 营期信息、成长路径、240h vs 60h、入营要求 |
-| 外教团队（全外教零中教模式卡） | #team | `Team.jsx` | 全外教零中教教学模式 |
+| 项目介绍（三个课程项目卡） | #projects | `Projects.jsx` | 《项目介绍.md》：成年人三周集训营 / 半封闭听力预备班 / 少儿冬令营 |
 | 学员收获（成长弧线 / 八大心理障碍 / 定位宣言） | #outcomes | `Outcomes.jsx` | 蜕变纪实方向、八大障碍清单 |
 | 全屏收束页（营地信息 / 报名渠道 / 版权） | #contact | `Footer.jsx` | 开营日期、手机 / 邮箱 / 抖音（已上线） |
 
@@ -44,8 +44,9 @@ npm run preview    # 本地预览构建产物
 
 打开 `src/data.js`，以下内容均标有注释：
 
-1. **外教个人资料**（姓名 / 履历 / 照片）→ 目前外教模块是"全外教零中教"模式卡，
-   提供资料后可将 `team.cards` 结构替换为个人卡片（v0.1 有可参考的实现，`git show a340fe3:src/components/Team.jsx`）
+1. **外教个人资料**（姓名 / 履历 / 照片）→ 按企业口径「不宣传外教」，原「外教团队」板块已下线，
+   第三板块改为「项目介绍」（`projects`：三个课程项目，文案来自《项目介绍.md》）。
+   注意：Hero / 浸泡营 / 关于我们 / 收束页仍有几处「全外教」表述，等企业口径确定后再统一。
 2. **ICP 备案号** → `contact.icp`（现为空，页脚不显示）
 3. 宣传语 / 具体数字口径如有出入，直接在 `data.js` 中改
 
