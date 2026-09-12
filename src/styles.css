@@ -34,8 +34,7 @@
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ---------- base ----------
-   必须放在 /* ---------- 字体：只内联 Manrope 的 latin 子集 ----------
+/* ---------- 字体：只内联 Manrope 的 latin 子集 ----------
    原来 `import '@fontsource-variable/manrope'` 会把 cyrillic / cyrillic-ext / greek /
    vietnamese / latin-ext / latin 六个子集全打进单文件（约 100 kB base64），而本站的
    拉丁字符只用到 basic latin（其它中文全走系统字体）→ 只保留 latin 子集省 ~67 kB。
@@ -49,7 +48,8 @@
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 
-@layer base 内：Tailwind v4 的工具类都在 @layer utilities，
+/* ---------- base ----------
+   必须放在 @layer base 内：Tailwind v4 的工具类都在 @layer utilities，
    而无层级的裸 CSS 永远优先于有层级的 CSS —— 之前 img{display:block} 裸写，
    导致 <img class="hidden"> 根本隐藏不掉（md:block 的小标在手机上溢出屏幕）。 */
 @layer base {
