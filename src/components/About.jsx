@@ -4,6 +4,7 @@ import AboutDetail from './AboutDetail.jsx'
 import Mark from './Mark.jsx'
 import Modal from './Modal.jsx'
 import Reveal from './Reveal.jsx'
+import CountUp from './CountUp.jsx'
 
 export default function About() {
   const [open, setOpen] = useState(false)
@@ -68,7 +69,7 @@ export default function About() {
                 } ${i > 0 ? 'md:border-l md:border-line' : ''}`}
               >
                 <p className="text-[clamp(2.2rem,3.6vw,3.2rem)] font-extrabold tracking-[-0.02em]">
-                  {s.v}
+                  <CountUp value={s.v} />
                   {s.u && <span className="text-[0.62em] font-bold text-brand ml-0.5">{s.u}</span>}
                 </p>
                 <p className="mt-1.5 text-[13.5px] font-medium text-mut">{s.l}</p>

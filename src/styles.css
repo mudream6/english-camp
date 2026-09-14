@@ -296,6 +296,12 @@
   }
 }
 
+/* Hero 版 kicker 不画那条 30px 短横线：首行标记的破折号由文案自带（—…—），
+   去掉线避免左侧出现「线 + —」双记号。只作用于 Hero，其他板块小标仍保留短横线。 */
+.kicker.kicker-hero::before {
+  display: none;
+}
+
 /* 商标小标：小号 + 上标 ®（Hero kicker / 标题 / 正文通用，配合 <Mark> 使用） */
 .reg {
   font-size: 0.6em;

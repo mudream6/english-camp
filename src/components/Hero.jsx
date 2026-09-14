@@ -38,10 +38,15 @@ export default function Hero() {
           className="h-anim mt-4 text-[clamp(2.2rem,5.4vw,3.9rem)] font-extrabold leading-[1.14] tracking-[-0.02em]"
           style={{ animationDelay: '300ms' }}
         >
-          <span className="block">{hero.line1}</span>
+          <span className="block">
+            {hero.line1a}
+            <span className="text-brand">{hero.line1b}</span>
+            {hero.line1c}
+          </span>
           <span className="block">
             {hero.line2a}
             <span className="text-brand">{hero.line2b}</span>
+            {hero.line2c}
           </span>
         </h1>
 
@@ -76,11 +81,11 @@ export default function Hero() {
 
         {/* 信任点 */}
         <ul
-          className="h-anim mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+          className="h-anim mt-8 grid grid-cols-2 justify-items-start gap-x-4 gap-y-3 text-left sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:text-center"
           style={{ animationDelay: '680ms' }}
         >
           {hero.trust.map((t) => (
-            <li key={t} className="flex items-center gap-2 text-[13.5px] font-medium text-mut sm:text-[14px]">
+            <li key={t} className="flex items-center gap-2 text-[12.5px] font-medium text-mut sm:text-[14px]">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" strokeWidth="2.2" className="shrink-0">
                 <path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

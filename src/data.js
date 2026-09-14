@@ -14,26 +14,41 @@ export const brand = {
 
 export const nav = {
   links: [
-    { id: 'about', label: '关于英语村' },
-    { id: 'courses', label: '三周浸泡营' },
-    { id: 'projects', label: '项目介绍' },
+    { id: 'about', label: '关于我们' },
+    { id: 'courses', label: '核心项目' },
+    { id: 'projects', label: '开营信息' },
     { id: 'outcomes', label: '学员收获' },
   ],
   cta: { label: '报名咨询', href: '#contact' },
 }
 
 export const hero = {
-  kicker: 'TIFSC® 海南英语村 · 三周全封浸®外语俱乐部',
-  leadIt: 'English is a skill you build — not a subject you study.',
-  line1: '我们只做一件事：',
-  line2a: '把英语从“学科”练成',
-  line2b: '“技能”。',
-  sub: '源于北大数十年英语教学研究体系，三周全封闭外教浸泡营——全外教、零中教、全程 English Only。2026 年 10 月 8 日新一期开营，面向全社会招生：不刷题、不考试，只为练成真正流利的听说。',
+  kicker: '—海南英语村·TIFSC全封浸外语俱乐部—',
+  leadIt: 'You Are Your Own Best Teacher',
+  /* 标题第 1 行拆三段：line1a + 蓝色强调 line1b + line1c
+     （和第 2 行的 line2a / line2b 是同一套「前段 + 蓝字」写法，只是首行前后都还有字，所以多一段） */
+  line1a: '这是一个',
+  line1b: '“习得”',
+  line1c: '英语技能的地方',
+  /* 第 2 行同样是三段式：line2a + 蓝色强调 line2b + line2c */
+  line2a: '不是一个',
+  line2b: '“学得”',
+  line2c: '英语知识的地方',
+  sub: '全封浸三周集训项目是核心项目。该项目成功之处在于充分洞悉中国人学习英语规律和特点，遵循人类自然习得语言规律，围绕建立英语思维层面流利听说能力设计实施。它是真正意义上的以学员为中心的习得英语技能的成功方案。',
   cta: [
     { label: '报名新一期 · 10.8 开营', href: '#contact', primary: true },
     { label: '了解三周浸泡营', href: '#courses' },
   ],
-  trust: ['全外教 · 零中教', 'English Only 全英文', '240 小时纯口语输出', '纯浸泡 · 重输出'],
+  /* 数组：引号里面不能换行，但引号外面（逗号之后）想换行就换行，JS 不在乎排版。
+     规则只有一条 —— 每项之间必须是【英文半角逗号】, 最后一项后面留个逗号也合法。 */
+  trust: [
+    '全外教 · 零中教',
+    '情景式 · 体验式',
+    '项目式 · 互动式',
+    'English Only No Chinese',
+    '240小时输入输出',
+    '2000听力词汇量门槛',
+  ],
 }
 
 export const about = {
@@ -41,7 +56,7 @@ export const about = {
   en: 'About',
   zh: '关于我们',
   title: '传承老一辈教育理念，破解“哑巴英语”困境',
-  p1: 'TIFSC® 海南英语村传承老一辈教育家的教育理念，致力于破解国人“哑巴英语”困境。',
+  p1: 'TIFSC 海南英语村传承老一辈教育家的教育理念，致力于破解国人“哑巴英语”困境。',
   p2: '我们兼顾教师培训、成人英语口语训练与青少年全封闭沉浸式听说实训，依托成熟教学体系，打造全语言浸泡环境。',
   p3: '外教团队以英语母语者为主，融合北美先进语言训练方法，结合国内学习者特点做本土化适配；俱乐部可提供标准化与定制化训练服务，同时积极向中西部地区倾斜优质教育资源，推动英语教育均衡发展。',
   features: [
@@ -82,10 +97,10 @@ export const about = {
       titles: '美籍爱国华侨、国家友谊奖获得者、北大版大学英语视听说教材总主编全封浸英语口语训练体系创始人',
     },
     paragraphs: [
-      'TIFSC全封浸外语俱乐部（Total Immersion Foreign Studies Club），创办初衷是传承老一辈教育家的教育精神，探索全语言环境下的英语教学实践，减轻国内英语教与学两端的负担。',
-      '机构业务覆盖三大方向：中小学英语教师口语与教学法培训、成人英语口语能力训练，以及青少年全封闭沉浸式听说技能实训，为教育研究者、家长与参训教师提供真实实践案例。在合规前提下，推动解决长期存在的哑巴英语问题。',
-      '教学体系基于余博士的研究成果升级而来，通过市场化落地，形成适配中国学情的训练方案，支持标准化与定制化服务。外教团队以英语母语国家教师为主体，辅以优秀非母语专业师资；课程借鉴北美语言训练理念，结合国内学习者特征做针对性调整，训练过程兼顾严谨、友好与趣味性。',
-      '我们希望优质教育资源可以惠及更多地区，优先向中西部欠发达地区倾斜，欢迎各界有识之士共同助力国内英语教育质量均衡发展。',
+      /* 2026-09-14 按要求整段替换（原文为一大段，按句子边界拆成 3 段便于阅读） */
+      '源自北京大学和美籍爱国华侨 Danny Yu 博士四十五年公益类学术研究项目。原项目自1981年至2007，从脱产训练十二个月逐步精简至三周。全封闭、全外教、情景式、体验式、项目式、互动式为其主要特点。全程结合中国人学习英语特点，遵循人类自然习得语言能力规律，围绕建立英语思维层面流利听说能力展开训练的优秀项目。它是真正意义上的以学员为中心的习得英语技能的成功方案。',
+      '该方案至今已经有二十四万高级外派人员及家属和两万四千多中小学英语教师收益。Danny博士获得华人在国内最高奖项“国家友谊奖”。',
+      '海南英语村从2025年开始落地海南，本着传承老一辈教育家奉献精神和博爱理念，继续探索提升该体系，尝试引导全社会提升口语习得方法和质量，让英语口语“教和学”不再艰难。',
     ],
   },
 }
@@ -93,7 +108,7 @@ export const about = {
 export const courses = {
   no: '02',
   en: 'Program',
-  zh: '浸泡营',
+  zh: '核心项目',
   title: '三周全封闭外教浸泡营',
   sub: '全新一期于 2026 年 10 月 8 日正式开营，面向全社会招生。',
   camp: {
@@ -150,8 +165,8 @@ export const courses = {
 
 export const projects = {
   no: '03',
-  en: 'Programs',
-  zh: '项目介绍',
+  en: 'Sessions',
+  zh: '开营信息',
   /* 标题照搬资料原文（《项目介绍.md》：TIFSC海南英语村课程项目） */
   title: 'TIFSC 海南英语村课程项目',
   /* 值支持富文本：'文字' | { hl: '加重词' } | { num: '加重数字' }
@@ -231,30 +246,53 @@ export const contact = {
   title: '2026 年 10 月 8 日，新一期开营',
   sub: '三周全封闭外教浸泡营，面向全社会招生。报名咨询请直接联系下列渠道，开营前将与你确认入营事宜。',
   // 报名渠道：企业要求客户直接联系，原预约表单已下线（2026-09）
+  // 报名渠道卡：内容全部来自 contact.direct.groups —— 以后加/删渠道只改这一处
   direct: {
     title: '直接联系我们 · 报名咨询',
     note: '新一期 2026 年 10 月 8 日开营，面向全社会招生',
-    // 手机号 / 邮箱只做展示，不挂 tel: / mailto: 跳转（企业要求）
-    rows: [
-      { icon: 'phone', label: '手机号', value: '13307547401' },
-      { icon: 'mail', label: '企业邮箱', value: '1304047210@qq.com' },
+    /* 每一组支持的键（键名=组件接口，读它的是 components/Footer.jsx 里的 DirectContact）：
+       icon   图标：phone 手机 / mail 邮箱 / wechat 微信 / service 服务号 / douyin 抖音 / xhs 小红书 / shipin 视频号
+       label  小标题（灰色小字）
+       value  一行纯文字：手机号、邮箱、微信号、账号名（纯展示，不跳转）
+       copy   true = 这行文字可以点一下复制（手机号 / 邮箱 / 微信号 / 视频号名）；不写就是普通文字
+       links  有主页链接的渠道才写：数组，每项 { name:'显示名', url:'链接' }，点名字开新窗口
+       sub    value 下面的一行小字（例：小红书号）
+       hint   这一组最下面一行的灰色提示 */
+    groups: [
+      { icon: 'phone', label: '手机号', value: '13307547401', copy: true },
+      { icon: 'mail', label: '企业邮箱', value: '1304047210@qq.com', copy: true },
+      { icon: 'wechat', label: '官方微信', value: 'TIFSC2025', copy: true },
+      { icon: 'shipin', label: '视频号', value: 'TIFSC杰森', copy: true },
+      {
+        icon: 'douyin',
+        label: '抖音搜索',
+        links: [
+          {
+            name: '海南英语村丁杰森',
+            url: 'https://www.douyin.com/user/MS4wLjABAAAAaJQ5ja3wGJ2JuGYjxcYGw6MATTweJnphlv4E7t5jt4rsxPaQzIi7F0htGt7936vg',
+          },
+          {
+            name: 'TIFSC海南英语村',
+            url: 'https://www.douyin.com/user/MS4wLjABAAAA7G5Vzk7WobSAJvWQa-vWsGBXCQa1QTrSVGERZYHYDgA',
+          },
+        ],
+        hint: '点击账号名打开抖音主页',
+      },
+      {
+        icon: 'xhs',
+        label: '小红书',
+        links: [
+          {
+            name: 'TIFSC海南英语村',
+            url: 'https://www.xiaohongshu.com/user/profile/67112c6c000000001d03183c',
+          },
+        ],
+        sub: '小红书号 63656209399',
+        hint: '点击账号名打开小红书主页',
+      },
+      /* wide: true = 这一组在 lg 的两列排布里横跨整行（值最长的「微信服务号」用它，避免折成两行） */
+      { icon: 'service', label: '微信服务号', value: 'TIFSC全封浸外语俱乐部', wide: true },
     ],
-    douyin: {
-      icon: 'douyin',
-      label: '抖音搜索',
-      // 两个账号各挂自己的真实主页链接（企业提供）
-      accounts: [
-        {
-          name: '海南英语村丁杰森',
-          url: 'https://www.douyin.com/user/MS4wLjABAAAAaJQ5ja3wGJ2JuGYjxcYGw6MATTweJnphlv4E7t5jt4rsxPaQzIi7F0htGt7936vg',
-        },
-        {
-          name: 'TIFSC海南英语村',
-          url: 'https://www.douyin.com/user/MS4wLjABAAAA7G5Vzk7WobSAJvWQa-vWsGBXCQa1QTrSVGERZYHYDgA',
-        },
-      ],
-      hint: '点击账号名可直接打开抖音主页',
-    },
   },
   items: [
     {
@@ -278,7 +316,7 @@ export const contact = {
     {
       icon: 'users',
       label: '报名渠道',
-      value: '手机 · 邮箱 · 抖音',
+      value: '手机·抖音·小红书·视频号',
       note: '见右侧渠道卡，点击即可直接联系',
     },
   ],

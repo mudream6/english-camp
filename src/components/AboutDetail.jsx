@@ -1,15 +1,20 @@
 import { about } from '../data.js'
+/* 2026-09-14 按要求下线：余国良博士照片 / 公益口语课堂合影
+   （图片已备份到项目根目录「已下线图片备份」文件夹；重新上架时把下面两行外面的注释符号删掉）
 import founder from '../assets/modal/founder.webp'
 import classPic from '../assets/modal/class.webp'
+*/
 import club from '../assets/modal/club.webp'
 import banner from '../assets/modal/banner.webp'
 
-/* 弹窗照片（顺序：余国良博士 / 公益口语课堂 / 俱乐部活动 / 营期合影）
-   第一张挂了人物标识：鼠标碰到图片时从图底部滑出椭圆标识（触屏设备常显）
+/* 弹窗照片（顺序：俱乐部活动 / 营期合影）
+   原第 1 张（余国良博士）挂了人物标识：鼠标碰到图片时从图底部滑出椭圆标识 —— 已随图一起下线
    黑白照原图仅 400×265，按原尺寸使用，不放大 */
 const photos = [
+  /* 2026-09-14 按要求下线（备份见项目根目录「已下线图片备份」，重新上架时取消注释）：
   { src: founder, alt: '余国良博士照片', credit: true },
   { src: classPic, alt: 'TIFSC 公益口语课堂合影' },
+  */
   { src: club, alt: 'TIFSC 外语俱乐部活动现场' },
   { src: banner, alt: 'TIFSC 外语俱乐部合影' },
 ]
