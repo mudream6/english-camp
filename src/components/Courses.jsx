@@ -1,3 +1,6 @@
+/* ⚠️ 2026-09-23 已下线：本区块（核心项目：招募卡 / 三周成长路径 / 差异对比 / 入营要求）
+   已从 App.jsx 移除，不再出现在页面上；文件保留备查。
+   想恢复：在 App.jsx 里把 import Courses 和 <Courses /> 加回 <About /> 之后即可。 */
 import { courses } from '../data.js'
 import Reveal from './Reveal.jsx'
 import Mark from './Mark.jsx'

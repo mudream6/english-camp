@@ -15,9 +15,9 @@ export const brand = {
 export const nav = {
   links: [
     { id: 'about', label: '关于我们' },
-    { id: 'courses', label: '核心项目' },
-    { id: 'projects', label: '开营信息' },
-    { id: 'outcomes', label: '学员收获' },
+    { id: 'projects', label: '项目介绍' },
+    { id: 'outcomes', label: '理念方法' },
+    { id: 'contact', label: '联系我们' },
   ],
   cta: { label: '报名咨询', href: '#contact' },
 }
@@ -37,7 +37,8 @@ export const hero = {
   sub: '全封浸三周集训项目是核心项目。该项目成功之处在于充分洞悉中国人学习英语规律和特点，遵循人类自然习得语言规律，围绕建立英语思维层面流利听说能力设计实施。它是真正意义上的以学员为中心的习得英语技能的成功方案。',
   cta: [
     { label: '报名新一期 · 10.8 开营', href: '#contact', primary: true },
-    { label: '了解三周浸泡营', href: '#courses' },
+    /* 2026-09-23：原「核心项目」板块下线后，这个按钮改跳「项目介绍」(#projects) */
+    { label: '了解三周浸泡营', href: '#projects' },
   ],
   /* 数组：引号里面不能换行，但引号外面（逗号之后）想换行就换行，JS 不在乎排版。
      规则只有一条 —— 每项之间必须是【英文半角逗号】, 最后一项后面留个逗号也合法。 */
@@ -105,6 +106,8 @@ export const about = {
   },
 }
 
+/* 2026-09-23 按要求下线：整个「核心项目」板块不再渲染（App.jsx 里已移除 <Courses />）。
+   数据先留着备查；想恢复：把 Courses.jsx 的 import 与 <Courses /> 加回 App.jsx 即可。 */
 export const courses = {
   no: '02',
   en: 'Program',
@@ -164,9 +167,10 @@ export const courses = {
 }
 
 export const projects = {
-  no: '03',
-  en: 'Sessions',
-  zh: '开营信息',
+  /* 2026-09-23：原「开营信息」上移，占据原「核心项目」的位置，改名为「项目介绍」 */
+  no: '02',
+  en: 'Projects',
+  zh: '项目介绍',
   /* 标题照搬资料原文（《项目介绍.md》：TIFSC海南英语村课程项目） */
   title: 'TIFSC 海南英语村课程项目',
   /* 值支持富文本：'文字' | { hl: '加重词' } | { num: '加重数字' }
@@ -218,11 +222,14 @@ export const projects = {
 }
 
 export const outcomes = {
-  no: '04',
-  en: 'Outcomes',
-  zh: '学员收获',
+  /* 2026-09-23 按要求：板块名由「学员收获」改为「理念方法」；副标题那句删掉（留注释备查） */
+  no: '03',
+  en: 'Approach',
+  zh: '理念方法',
   title: '蜕变，从敢开口开始',
+  /* 已删的副标题（想恢复就把本行和下面「注释结束」那行的注释符号去掉）：
   sub: '记录学员从胆怯、卡顿、不敢开口，到自然流利英文表达的完整成长变化。',
+  注释结束 */
   journey: {
     label: '三周成长弧线',
     steps: [
@@ -232,7 +239,7 @@ export const outcomes = {
     ],
   },
   barriers: {
-    label: '先拆掉这八道“心墙”',
+    label: '拆掉这八道“心墙”',
     items: ['害怕犯错', '害羞怯场', '爱攀比', '心态内耗', '端架子', '逃避表达', '碍于面子', '习惯性自我否定'],
     note: '这八种心理障碍，是中国人“哑巴英语”的典型成因——也是营地每一天都在突破的对象。',
   },
@@ -240,7 +247,7 @@ export const outcomes = {
 }
 
 export const contact = {
-  no: '05',
+  no: '04',
   en: 'Contact',
   zh: '联系我们',
   title: '2026 年 10 月 8 日，新一期开营',

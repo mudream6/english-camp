@@ -16,7 +16,10 @@ export default function Outcomes() {
             <h2 className="mt-6 max-w-[680px] text-[clamp(1.9rem,3.4vw,2.9rem)] font-extrabold leading-[1.2] tracking-[-0.015em]">
               {outcomes.title}
             </h2>
-            <p className="mt-5 max-w-[540px] text-[15px] leading-[1.9] text-mut">{outcomes.sub}</p>
+            {/* 副标题：data.js 里的 sub 有内容才渲染（2026-09-23 该句已删，不留空档） */}
+            {outcomes.sub && (
+              <p className="mt-5 max-w-[540px] text-[15px] leading-[1.9] text-mut">{outcomes.sub}</p>
+            )}
           </Reveal>
         </div>
 
